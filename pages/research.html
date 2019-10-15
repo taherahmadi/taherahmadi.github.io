@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>Research - Daniel Steinberg</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/images/favicon.ico" rel="icon">
+
+<link rel="canonical" href="/pages/research.html">
+
+        <meta name="author" content="Daniel Steinberg" />
+        <meta name="description" content="This page presents a brief summary of some of the research I have done to date, starting with newer work at the top. The impact of computerisation and automation on future employment" />
+
+    <meta property="og:site_name" content="Daniel Steinberg" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Research"/>
+    <meta property="og:url" content="/pages/research.html"/>
+    <meta property="og:description" content="This page presents a brief summary of some of the research I have done to date, starting with newer work at the top. The impact of computerisation and automation on future employment" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cyborg.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+        <link href="/theme/css/typogrify.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+    <script src="/theme/js/jquery.min.js"></script>
+        <link href="/theme/css/plusgallery.css" rel="stylesheet">
+        <script src="/theme/js/plusgallery.js"></script>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Daniel Steinberg            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/index.html">
+                             About
+                          </a></li>
+                         <li><a href="/pages/photos.html">
+                             Photos
+                          </a></li>
+                         <li><a href="/pages/publications.html">
+                             Publications
+                          </a></li>
+                         <li class="active"><a href="/pages/research.html">
+                             Research
+                          </a></li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-10">
+
+    <section id="content" class="body">
+        <h1 class="entry-title">Research</h1>
+        
+        <div class="entry-content">
+            <p>This page presents a brief summary of some of the research I have done to date,
+starting with newer work at the&nbsp;top.</p>
+<h3>The impact of computerisation and automation on future&nbsp;employment</h3>
+<div class="col-sm-6 col-md-6" style="margin-left: -15px;">
+<div class="panel panel-default">
+    <div class="panel-body">
+        <img
+        src="http://adminpanel.ceda.com.au/FOLDERS/Service/Files/Documents/26774~Figure3FINAL.jpg"
+        alt="LGA probability of job loss.">
+    </div>
+    <div class="panel-footer">
+        Weighted probability of job loss through computerisation and automation
+        in local government areas of Australia.
+    </div>
+</div>
+</div>
+
+<p>This work is a qualitative study into the susceptibility of jobs in Australia
+to computerisation and automation over the next 10 to 15 years. The methodology
+and initial data used is based on the much-cited paper by Frey and Osborne,
+which studied this same problem for the United States (<span class="caps">US</span>) and, more recently,
+for the United Kingdom (<span class="caps">UK</span>). The key to this work is trying to understand and
+quantify the impact of emerging technology on jobs and employment in areas such
+as artificial intelligence, robotics and machine&nbsp;learning.</p>
+<p>The results show that 40 per cent of jobs in Australia have a high probability
+of being susceptible to computerisation and automation in the next 10 to 15
+years. Jobs in administration and some services are particularly susceptible,
+as are regions that have historically associated with the mining industry. Jobs
+in the professions, in technical and creative industries, and in personal
+service areas (health for example) are least susceptible to automation. The
+report can be found <a href="http://adminpanel.ceda.com.au/FOLDERS/Service/Files/Documents/26792~Futureworkforce_June2015.pdf">here</a>.</p>
+<div style="clear: both;"></div>
+
+<h3>Nonparametric Bayesian Inverse&nbsp;Problems</h3>
+<div class="col-sm-6 col-md-6" style="margin-left: -15px;">
+<div class="panel panel-default">
+    <div class="panel-body">
+        <img src="/images/ugp-sign.png" alt="UGP signum test">
+    </div>
+    <div class="panel-footer">
+        Example of learning the unscented Gaussian process (<span class="caps">UGP</span>) with a
+        non-differentiable nonlinear function (forward model) in the likelihood
+        - a polynomial with one term in a signum function. Here only the black
+        dots are seen by the algorithm, and the nonlinear function transforming
+        the blue line to the green is known, but not its inverse. The aim is to
+        estimate the latent function (blue line) from the black dots, without
+        knowing the inverse function. In this figure we show the predictive
+        distributions of the latent function (red dashed line and standard
+        deviation bounds) and of the observations (green line and standard
+        deviation bounds).
+    </div>
+</div>
+</div>
+
+<p>Nonlinear inversion problems, where we wish to infer the latent inputs to a
+system given observations of its output and the system’s forward-model, have a
+long history in the natural sciences, dynamical modeling and estimation. An
+example is the robot-arm inverse kinematics problem, where we wish to infer how
+to drive the robot’s joints (i.e. joint torques) in order to place the
+end-effector in a particular position, given we can measure its position and
+know the forward kinematics of the arm. Most of the existing algorithms either
+estimate the system inputs at a particular point in time like the
+Levenberg-Marquardt algorithm, or in a recursive manner such as the extended
+and unscented Kalman filters (<span class="caps">EKF</span>, <span class="caps">UKF</span>). In many inversion problems we have a
+continuous process; a smooth trajectory of a robot arm for example.
+Non-parametric regression techniques like Gaussian processes seem applicable,
+and have been used in linear inversion&nbsp;problems. </p>
+<p>In this work we present two new methods for inference in Gaussian process (<span class="caps">GP</span>)
+models with general nonlinear likelihoods. Inference is based on a variational
+framework where a Gaussian posterior is assumed and the likelihood is
+linearized about the variational posterior mean using either a Taylor series
+expansion or statistical linearization. We show that the parameter updates
+obtained by these algorithms are equivalent to the state update equations in
+the iterative extended and unscented Kalman filters respectively, hence we
+refer to our algorithms as extended and unscented GPs. The unscented <span class="caps">GP</span> treats
+the likelihood as a &#8216;black-box&#8217; by not requiring its derivative for inference,
+so it also applies to non-differentiable likelihood models. We evaluate the
+performance of our algorithms on a number of synthetic inversion problems and a
+binary classification dataset. See our <a href="http://papers.nips.cc/paper/5455-extended-and-unscented-gaussian-processes"><span class="caps">NIPS</span> <em>spotlight</em>
+paper</a>
+for more&nbsp;details.</p>
+<div style="clear: both"></div>
+
+<h3>Unsupervised Scene&nbsp;&#8220;Understanding&#8221;</h3>
+<div>
+    <div class="col-sm-4 col-md-3" style="margin-left: -15px;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <img src="/images/MSRC_im_ex.jpg" alt="MSRC clusters" />
+        </div>
+        <div class="panel-footer">
+            Sample images belonging to image clusters found by an algorithm
+            that can use both whole-image features and distributions of objects
+            to describe images. The image clusters are shown row-wise.
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-4 col-md-3" style="margin-left: -15px; margin-right: 0px;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <img src="/images/MSRC_seg_ex.jpg" alt="MSRC segments" />
+        </div>
+        <div class="panel-footer">
+            The corresponding learned segment clusters to the images in the
+            previous figure. The composition and proportions of these segment
+            clusters (coloured regions) are fairly consistent within an image
+            cluster. 
+        </div>
+    </div>
+    </div>
+</div>
+
+<p>For very large scientific datasets with many image classes and objects,
+producing the ground-truth data for supervised (trained) algorithms can
+represent a substantial, and potentially expensive, human effort. In these
+situations there is scope for the use of unsupervised approaches, such as
+clustering, which can model collections of images and automatically summarise
+their content without human&nbsp;training. </p>
+<p>To explore how modelling context effects clustering results, I derived several
+new algorithms that simultaneously cluster images and segments (super-pixels)
+within images. These algorithms also model collections of photos such as photo
+albums. Images are defined by whole-scene descriptors <em>and</em> the distribution of
+&#8220;objects&#8221; (segment clusters) within them. The images and segments are clustered
+using this joint representation, which is also more interpretable by people.
+The intuition behind this approach is that by knowing something about the type
+of scene (image cluster), object detection (segment clustering) can be
+improved. That is, we are likely to find trees in a forest. Additionally, by
+knowing about the distribution and co-occurrence of objects in an image, we
+have a better idea of the type of scene (cows and grass most likely make a
+rural&nbsp;scene). </p>
+<p>These algorithms for unsupervised scene understanding outperform other
+unsupervised algorithms for segment and scene clustering. This is because of
+how they model context. These algorithms were even found to be competitive with
+state of the art supervised and semi-supervised approaches to scene
+understanding, as well as being scalable to larger datasets. See
+my <a href="/docs/Steinberg_ICCV2013_MCM.pdf"><span class="caps">ICCV</span> paper</a>,
+<a href="/docs/CVIU_scene.pdf"><span class="caps">CVIU</span> article</a> and my <a href="/docs/Thesis.pdf">thesis (ch. 5 <span class="amp">&amp;</span>
+6)</a> for more&nbsp;information.</p>
+<div style="clear: both"></div>
+
+<h3>Clustering Images Over Many&nbsp;Datasets</h3>
+<p>Large image collections are frequently partitioned into distinct but related
+groups, such as photo albums from distinct environments that contain similar
+scenes. For example, a hiking holiday album may contain many images of forests
+and maybe a few villages. Whereas a conference trip album may have many urban
+scenes and images of people, with perhaps a few images of park-land. These
+groups, or albums, may be thought of as providing context for the images they&nbsp;contain.</p>
+<p>I have formulated and applied a latent Dirichlet allocation-like algorithm to
+this problem. It shares image clusters between groups or albums, and keeps the
+proportion of clusters (mixture-weights) specific to each group, thereby
+modelling the context of the group. By doing this, the algorithm is actually
+better at finding clusters, and is often faster when dealing with large
+datasets, than regular mixture model based approaches. See my 
+<a href="/docs/Thesis.pdf">thesis (ch.4)</a> for more&nbsp;information.</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <img src="/images/halbums_gmc_sub.jpg" alt="Album clusters">
+    </div>
+    <div class="panel-footer">
+        Here 10,300 images from 12 holiday photo albums are clustered. Shown
+        are the most and least &#8220;likely&#8221; images from seven clusters (out of 23).
+        Also shown are the most frequent five tags from Flickr associated with
+        the clusters. The algorithms that could model these photo albums found
+        more self-consistent clusters than the algorithms that count not, such
+        as regular mixture models. This took less than a minute to run. Again,
+        these are entirely unsupervised algorithms
+    </div>
+</div>
+
+<h3>Clustering Images of the&nbsp;Seafloor</h3>
+<p>I have applied a Bayesian non-parametric algorithm, the variational Dirichlet
+process (with Gaussian clusters), to clustering large quantities of seafloor
+imagery (obtained from an autonomous underwater vehicle or <span class="caps">AUV</span>) in an
+unsupervised manner. The algorithm has the attractive property that it does not
+require knowledge of the number of clusters to be specified, which enables
+truly autonomous sensor data abstraction. The underlying image representation
+uses descriptors for colour, texture and 3D structure that are obtained from
+stereo cameras. This approach consistently produces easily recognisable
+clusters that approximately correspond to different habitat types.  These
+clusters are useful in observing spatial patterns, focusing expert analysis on
+subsets of seafloor imagery, aiding mission planning, and potentially informing
+real time adaptive sampling. See my
+<a href="http://www.isrr-2011.org/ISRR-2011//Program_files/Papers/Williams-ISRR-2011.pdf"><span class="caps">ISRR</span> paper</a>
+for more&nbsp;details.</p>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+        <div class="panel-body">
+            <img src="/images/scott25_img.jpg" alt="Cluster example">
+        </div>
+        <div class="panel-footer">
+            An example of images from an <span class="caps">AUV</span> survey that have been clustered.
+            This survey has 10,000 images within it. Some sample images
+            belonging to each of the 6 clusters found by the algorithm are
+            shown row-wise. The algorithm used only took a few seconds to
+            obtain these results, and needed no human generated training data.
+            That is, the algorithm found these image clusters with no human
+            input.<br>
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+        <div class="panel-body">
+            <img src="/images/scott25_mos.jpg" alt="Survey">
+        </div>
+        <div class="panel-footer">
+            Top-down mosaic of the survey.
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-4"> 
+        <div class="panel panel-default">
+        <div class="panel-body">
+            <img src="/images/scott25_xy.png" alt="Survey labels">
+        </div>
+        <div class="panel-footer">
+            Top-down view image locations coloured by image cluster labels.
+        </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+        </div>
+        <div class="col-sm-3 col-md-2 side-content">
+            <div id="aboutme" class="entry-content">
+<p>
+<img width="40%" class="img-rounded floatcenter" src="../images/profile_photo.jpg"/>
+</p>
+<p>
+    <span style="unicode-bidi:bidi-override;direction:rtl;">moc.liamg@grebniets.m.nad</span><br><a href="../docs/dsteinberg.pdf">Curriculum Vitae</a>
+</p>
+            </div>
+            <div id="sidebar"> 
+                <hr style="margin-bottom: 0px;">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/dsteinberg"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                    <li class="list-group-item"><a href="http://lnkd.in/mptmxq"><i class="fa fa-linkedin-square fa-lg"></i> Linkedin</a></li>
+                    <li class="list-group-item"><a href="https://www.flickr.com/photos/danielmsteinberg"><i class="fa fa-flickr fa-lg"></i> Flickr</a></li>
+                  </ul>
+                </li>
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://scholar.google.com.au/citations?user=w0oqSe8AAAAJ&hl=en" target="_blank">
+                Scholar
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://www.nicta.com.au" target="_blank">
+                NICTA
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+</aside>            </div>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Daniel Steinberg
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-54113039-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/dsteinberg
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://dsteinberg.github.io
+  * I am dsteinberg (https://keybase.io/dsteinberg) on keybase.
+  * I have a public key with fingerprint CA4F 23E7 CA63 14A6 28BA  3F1A 20CC AF98 0F35 4232
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101212fb4d0223531c0e84b2e7b4c2674f9eef1fdfccc9f0d8bed9b070259793a200a",
+            "fingerprint": "ca4f23e7ca6314a628ba3f1a20ccaf980f354232",
+            "host": "keybase.io",
+            "key_id": "20ccaf980f354232",
+            "kid": "0101212fb4d0223531c0e84b2e7b4c2674f9eef1fdfccc9f0d8bed9b070259793a200a",
+            "uid": "7a9234c894c1fc5e78c767da55c9fc00",
+            "username": "dsteinberg"
+        },
+        "revoke": {
+            "sig_ids": [
+                "e24d26e716e52ea8fa519ef4f2c5e602f2c148f1eb0c48ec35a03fb43a46c1820f"
+            ]
+        },
+        "service": {
+            "hostname": "dsteinberg.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1463882904,
+    "expire_in": 157680000,
+    "prev": "9575fa800eaae53e056228eea66c8a09ea4774975e3b08d444c396ab58e8c605",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMJxAnicrZJPbBVFHMdfa6mh0KhpU0JAE4ZLKRVnZ2d2Zx4oNBoSFUw0SDGgz9nZ
+37xu+nj72N338EEoBwxa87CtGkEPRg0JRSFiLWg4kFKNHtRACIke4NDgwZKGA1D+
+BAjMVjjp0b1MdvL9fn7f+c781PxQpqnu3cm/fpt6uX+07teTd8qZ7q7WfduRF/pV
+lN2OemFmgYIPcZLrDXyURdjCFrGI9qiPCbGZbSkMnHoEXI8q4rhUCwBtaV8rpYTG
+PvfAFx52MWHCFbYkGEvUiXRQzENUioJiYrBKUk1scJV0bItKh3BP2toyYqWkFhxr
+m1FiE2PsCePUYcJ5MoZlQWj2zE9uJt5/6P/n3OUZnCsFsanigipLKwYuV67j+pIx
+41UYp8IYoqLcDEbtxwkERQ+iPNrRiSKohL2QNhsHeRM7RtmNCAj1iQOu5QAjILmW
+zBKgTSuG7mBiVotybYGHFeWgbCaxbU5jS+ooixOs0euGbWZWAjUDT3v61/xl+SDp
+KXv/tFaKwiRUYcEoepKkFGfTdEm1lFq2gpe7D8t5QdE3t2UcFYjiICyirGWUKglS
+ukUdm3MiMO1E8FYpiCAXpArmOhybL50DFYMUzGVamj2QEpgNmDmEcADpOIpLLEBS
+16XCZWB7mPuUUmULR3qMA1cOZig93pZiiLLCxJR5gzQFFmVSjgDtGB/b1JCpa8o0
+zqpPX3GmafajD972xvGH7z77zBvOZyq/+tjhdV/eXn7qydaF9T2Pd3Xc3Pr8C7Nf
+W98Zfld/8RarzGlrZH2n/77S2zS9uxY3X/hg58cLLu36fnDoh8nPF20ZXZ09cqa+
+dGDi+sHqtTcfqXv7x58H9y5u+f1od/UbsW345p+bpu5OHj1/67HRs2J40ZH+8sDl
+JzrWfDr09PSZwyNzxlfNF3Of2j32RXKt/ZI+t+LrKX7inedWDOxvLvQfT0ihfajt
+0C/yxbMNY4XBuXsWrjnW2FW7enrk1IE/amLJVy+1rPtkGJVr791uH2i7QFb2zWs4
++crSJRNyVsur1ekr+e6+yQ2te25MvT9Ubbze8eHIhony2EffHlwb3pmXgW21xfcA
+8VJgvg==
+=uRF/
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/dsteinberg
+
+==================================================================
