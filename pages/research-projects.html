@@ -140,7 +140,7 @@ also utilize the structural similarity between the generated depth maps and grou
 truth as a loss term for depth estimation training. We then evaluate our proposed
 approach on the NYU v2. dataset. The experimental results show that when
 adversarial training is used, the performance of the existing method is improved.
-Also, we experimented the effect of employing different loss functions</p>
+</p>
 <!-- <p>Codes are available on [<a href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation">github</a>]
   [<a href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation/raw/master/documents/report.pdf">Report</a>]
   [<a href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation/raw/master/documents/poster.pdf">Poster</a>]
@@ -524,33 +524,6 @@ That’s what we are trying to achieve here specifically by using robots. Our ma
 
 <hr><!-------------------------------------------------------------------------->
 
-<h3>Object Classification using Convolutional Neural Networks with Attention Layers</h3>
-<div class="row">
-    <div class="col-sm-3">
-        <div class="panel panel-default">
-        <div class="panel-body">
-            <img src="../images/01/01a.jpg" alt="input example">
-        </div>
-        <div class="panel-footer">
-            <img src="../images/01/01b.jpg" alt="output example">
-        </div>
-        </div>
-    </div>
-    <div class="col-sm-3" style="margin-left: -15px;">
-        <div class="panel panel-default">
-        <div class="panel-body">
-            <img src="../images/01/02a.jpg" alt="input example">
-        </div>
-        <div class="panel-footer">
-            <img src="../images/01/02b.jpg" alt="output example">
-        </div>
-        </div>
-    </div>
-    <div class="col-sm-6	">
-        <p>A model with a large learning capacity is needed to learn about thousands of objects from millions of images. Convolutional neural networks constitute one such class of models having such capacity. These models are basically a based on retina. In this study we try to reduce the learning parameters by adding attentional layers to the architecture. Attentional layers provide the ability to obtain basic regions of interest.<br>Visual attention models rely on bottom-up influences or top-down influences or a combination of both. While there is no clear cut distinction between such influences in human attention. In this research we tend to use a combination of the bottom-up and top-down models. This model uses a task-based approach to approximate the bias of top-down models.
-    </div>
-</div>
-<hr><!-------------------------------------------------------------------------->
 
 <h3>Robust Cross Sign Detection for Arial Robot using Template Matching Algorithm</h3>
 <div class="row">
@@ -571,7 +544,7 @@ That’s what we are trying to achieve here specifically by using robots. Our ma
     </div>
 
     <div class="col-sm-6	">
-        <p>Template matching is a technique used to find a smaller image in a larger one. It works by sliding the small image accross the big one and it uses math to calculate which part of the bigger image is most likely to be the small image. This algorithm is nice because it always returns a value, unlike Haar cascades which is returns a position only if it finds a exact match.
+        <p>Template matching is a technique used to find a smaller image in a larger one. It works by sliding the small image accross the big one and calculates which part of the bigger image is most likely to be the small image. This algorithm always returns a value, unlike Haar cascades which is returns a position only if it finds a exact match.
 Template matching uses a template (picture of desired shape in this problem) which is shifted horizontal and vertical over the whole test image. But as the yaw of the taget is not known (build in first round) the template matching does not give good results. Therefore I implemented a turning algorithm of the template image. The matching is done with 1° offset each round until 30°. The highest score of each round is saved and compared to all rounds. The highest score is the best matched target with it's corresponding angle.</p>
 <br>Codes are available on [<a href="https://github.com/taherahmadi/IMAV_CrossRecognition">github</a>]
     </div>
