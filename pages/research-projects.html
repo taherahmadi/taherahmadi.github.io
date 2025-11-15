@@ -522,33 +522,6 @@ That’s what we are trying to achieve here specifically by using robots. Our ma
     </div>
 </div>
 
-<hr><!-------------------------------------------------------------------------->
-
-
-<h3>Robust Cross Sign Detection for Arial Robot using Template Matching Algorithm</h3>
-<div class="row">
-    <div class="col-sm-3">
-        <div class="panel panel-default">
-        <div class="panel-body">
-          <img src="../images/00/X.png" alt="template" style="position: absolute; bottom: 10%;">
-          <img src="../images/00/Xinput.jpg" alt="input example">
-        </div>
-        </div>
-    </div>
-    <div class="col-sm-3"  style="margin-left: -15px;">
-        <div class="panel panel-default">
-        <div class="panel-body">
-            <img src="../images/00/Xoutput.jpg" alt="output example">
-        </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6	">
-        <p>Template matching is a technique used to find a smaller image in a larger one. It works by sliding the small image accross the big one and calculates which part of the bigger image is most likely to be the small image. This algorithm always returns a value, unlike Haar cascades which is returns a position only if it finds a exact match.
-Template matching uses a template (picture of desired shape in this problem) which is shifted horizontal and vertical over the whole test image. But as the yaw of the taget is not known (build in first round) the template matching does not give good results. Therefore I implemented a turning algorithm of the template image. The matching is done with 1° offset each round until 30°. The highest score of each round is saved and compared to all rounds. The highest score is the best matched target with it's corresponding angle.</p>
-<br>Codes are available on [<a href="https://github.com/taherahmadi/IMAV_CrossRecognition">github</a>]
-    </div>
-</div>
 <!-------------------------------------------------------------------------->
         </div>
     </section>
