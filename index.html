@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Taher Ahmadi — Machine Learning Research Engineer</title>
+<title>Taher Ahmadi | Machine Learning Research Engineer</title>
 <meta name="author" content="Taher Ahmadi">
-<meta name="description" content="Taher Ahmadi — Machine Learning Research Engineer in Vancouver, BC. 7+ years across robotics, computer vision, and generative AI. Agentic systems, transformers, human intent prediction.">
+<meta name="description" content="Taher Ahmadi, Machine Learning Research Engineer in Vancouver, BC. 7+ years across robotics, computer vision, and generative AI. Agentic systems, transformers, human intent prediction.">
 <link rel="canonical" href="https://taherahmadi.github.io/">
 <link rel="icon" href="./images/favicon.ico">
 <meta property="og:site_name" content="Taher Ahmadi">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Taher Ahmadi — Machine Learning Research Engineer">
+<meta property="og:title" content="Taher Ahmadi | Machine Learning Research Engineer">
 <meta property="og:description" content="Agentic systems, LLM post-training, human motion prediction. Vancouver, BC.">
 <meta property="og:url" content="https://taherahmadi.github.io/">
 <meta property="og:image" content="https://taherahmadi.github.io/images/profile_photo.jpg">
@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   Taher Ahmadi — personal site
+   Taher Ahmadi personal site
    Single file. No build step. No framework.
    ============================================================ */
 
@@ -191,19 +191,6 @@ p.pitch b{color:var(--text);font-weight:600}
 .stat .l{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);margin-top:6px}
 @media(max-width:700px){.strip-in{grid-template-columns:repeat(2,1fr)}}
 
-/* ---------- terminal card ---------- */
-.term{
-  border:1px solid var(--line);border-radius:14px;background:var(--bg-elev);box-shadow:var(--shadow);
-  overflow:hidden;font-family:var(--mono);font-size:13px;line-height:1.75;
-}
-.term-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--line-soft);background:var(--bg-sunk)}
-.term-bar i{width:11px;height:11px;border-radius:50%;background:var(--line)}
-.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
-.term-bar span{margin-left:auto;font-size:11px;color:var(--muted)}
-.term-body{padding:20px 22px;white-space:pre-wrap;word-break:break-word;color:var(--text-2)}
-.term-body .p{color:var(--accent)}
-.term-body .k{color:var(--gold)}
-.term-body .c{color:var(--muted)}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:60px;align-items:start}
@@ -278,6 +265,7 @@ a.job-co:hover{border-bottom-color:var(--accent)}
   display:inline-flex;align-items:center;gap:5px;border-bottom:1px solid transparent;
 }
 .pub .plinks a:hover{border-bottom-color:var(--accent)}
+.pub .cites{font-family:var(--mono);font-size:12px;color:var(--gold);background:var(--gold-wash);border-radius:7px;padding:2px 9px}
 @media(max-width:620px){.pub{grid-template-columns:1fr;gap:14px}.venue{justify-self:start;padding:8px 14px}}
 
 /* ---------- projects ---------- */
@@ -305,6 +293,7 @@ a.job-co:hover{border-bottom-color:var(--accent)}
 }
 .card .foot a.gh:hover{color:var(--accent);transform:translateY(-1px)}
 .card .foot svg{width:17px;height:17px;fill:currentColor}
+.card .foot .stars{font-family:var(--mono);font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:3px}
 
 /* ---------- skills ---------- */
 .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
@@ -384,11 +373,6 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
   html{scroll-behavior:auto}
 }
 
-/* ---------- konami / robot easter egg ---------- */
-#robo{
-  position:fixed;bottom:-90px;left:-90px;z-index:200;font-size:46px;pointer-events:none;
-  transition:transform 1.2s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 4px 10px rgba(0,0,0,.3));
-}
 </style>
 </head>
 <body>
@@ -432,9 +416,9 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <p class="role"><span id="typed"></span><span class="caret">|</span></p>
         <p class="pitch">
           Machine Learning Research Engineer with <b>7+ years</b> across <b>robotics</b>,
-          <b>computer&nbsp;vision</b>, and <b>generative&nbsp;AI</b> — from transformer models that
-          predict human motion (<b>ICRA</b> ×2) to production <b>agentic systems</b> that turn natural
-          language into guaranteed-correct analytics. Based in Vancouver, BC.
+          <b>computer&nbsp;vision</b>, and <b>generative&nbsp;AI</b>. My work spans transformer models
+          that predict human motion (2 <b>ICRA</b> papers) and production <b>agentic systems</b> that
+          turn natural language into guaranteed-correct analytics. Based in Vancouver, BC.
         </p>
         <div class="cta">
           <a class="btn solid" href="#experience">See my work →</a>
@@ -450,7 +434,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
       </div>
       <figure class="portrait">
         <img src="images/profile_photo.jpg" alt="Portrait of Taher Ahmadi" width="270" height="270">
-        <figcaption>// vancouver, bc · 49.28°N 123.12°W</figcaption>
+        <figcaption>Vancouver, BC, Canada</figcaption>
       </figure>
     </div>
   </div>
@@ -460,10 +444,10 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <div class="strip">
   <div class="wrap">
     <div class="strip-in">
-      <div class="stat rv"><div class="n" data-count="7" data-suffix="+">0</div><div class="l">Years in ML</div></div>
-      <div class="stat rv"><div class="n" data-count="3">0</div><div class="l">Publications · 2× ICRA</div></div>
-      <div class="stat rv"><div class="n" data-count="70" data-suffix="%">0</div><div class="l">Queries automated</div></div>
-      <div class="stat rv"><div class="n" data-count="5">0</div><div class="l">Robotics podiums</div></div>
+      <div class="stat rv"><div class="n" data-count="7" data-suffix="+">0</div><div class="l">Years of Experience</div></div>
+      <div class="stat rv"><div class="n" data-count="3">0</div><div class="l">Peer-reviewed Publications</div></div>
+      <div class="stat rv"><div class="n" data-count="84">0</div><div class="l">Citations on Scholar</div></div>
+      <div class="stat rv"><div class="n" data-count="5">0</div><div class="l">Intl. Robotics Awards</div></div>
     </div>
   </div>
 </div>
@@ -472,13 +456,13 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <section class="band" id="about">
   <div class="wrap">
     <p class="eyebrow">01 · About</p>
-    <h2 class="sec-title rv">Robots taught me ML.<br>Now I teach LLMs to behave.</h2>
+    <h2 class="sec-title rv">From robotics research<br>to production AI systems.</h2>
     <div class="about-grid" style="margin-top:40px">
       <div class="about-copy rv">
         <p>
-          I started in competitive robotics — rescue simulation and humanoid soccer at
-          <b>RoboCup</b> — which is a great way to learn that models fail in the real world
-          long before they fail in a paper. That path led through a B.Sc. thesis on an embedded
+          My background begins in competitive robotics: rescue simulation and humanoid
+          soccer at <b>RoboCup</b>, where I first learned to build systems that must
+          perform outside the lab. That path led through a B.Sc. thesis on an embedded
           deep-learning <b>driver-assistance system</b>, an M.Sc. at
           <a href="https://www.sfu.ca/" target="_blank" rel="noopener">Simon Fraser University</a>
           on <b>probabilistic human navigational intent prediction</b> with
@@ -493,27 +477,19 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
           a <b>multi-agent analytics engine</b> at
           <a href="https://blueboatdata.com/" target="_blank" rel="noopener">Blue Boat Data</a>
           that converts natural-language questions into guaranteed-correct SQL, and now
-          <b>agentic medical-workflow automation</b> at <b>Waive Medical</b> — document
+          <b>agentic medical-workflow automation</b> at <b>Waive Medical</b>: document
           understanding and NER for clinical pipelines.
         </p>
         <p>
-          The common thread: taking models that are impressive in a demo and making them
-          <b>deterministic, typed, and reliable</b> enough to be trusted with real decisions.
+          Across all of it, my focus is the same: designing ML systems that are
+          <b>deterministic, well-typed, and reliable</b> enough to be trusted with
+          real-world decisions.
         </p>
-        <div class="term" style="margin-top:28px">
-          <div class="term-bar"><i></i><i></i><i></i><span>taher@vancouver:~</span></div>
-          <div class="term-body"><span class="p">$</span> whoami
-<span class="k">ml-research-engineer</span> <span class="c"># robotics → CV → GenAI</span>
-<span class="p">$</span> uptime
-7+ years, 3 publications, 0 hallucinated SQL rows
-<span class="p">$</span> cat /etc/motd
-<span class="c">"Constrain the model. Trust the type system."</span></div>
-        </div>
       </div>
       <div class="focus-list rv">
         <div class="focus">
           <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4m0 0h3M9 13v2m6-2v2M8 20v2m8-2v2"/></svg></span>
-          <div><h4>Agentic Systems</h4><p>Multi-agent workflows with typed intermediate representations that eliminate nondeterminism — in analytics and clinical automation.</p></div>
+          <div><h4>Agentic Systems</h4><p>Multi-agent workflows with typed intermediate representations that eliminate nondeterminism in analytics and clinical automation.</p></div>
         </div>
         <div class="focus">
           <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
@@ -525,7 +501,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         </div>
         <div class="focus">
           <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 17.5 10 4.5l4.5 9.5M14.5 14l2-4.5 3.5 8"/><path d="M3 20.5h18"/></svg></span>
-          <div><h4>ML Infrastructure</h4><p>Scalable pipelines and microservices on AWS/Azure, Docker &amp; K8s — built to survive enterprise traffic.</p></div>
+          <div><h4>ML Infrastructure</h4><p>Scalable pipelines and microservices on AWS/Azure, Docker &amp; K8s, built to survive enterprise traffic.</p></div>
         </div>
       </div>
     </div>
@@ -536,15 +512,15 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <section class="band" id="experience">
   <div class="wrap">
     <p class="eyebrow">02 · Experience</p>
-    <h2 class="sec-title rv">Seven years, four countries,<br>one obsession with reliability.</h2>
-    <p class="sec-lede rv">Enterprise SaaS, robotics research, and digital health — leading ML initiatives end-to-end.</p>
+    <h2 class="sec-title rv">Professional experience</h2>
+    <p class="sec-lede rv">Enterprise SaaS, robotics research, and digital health, leading ML initiatives end-to-end.</p>
 
     <div class="timeline">
       <article class="job rv">
         <div class="job-head">
           <h3>AI Engineer</h3>
           <span class="job-co">Waive Medical</span>
-          <span class="job-meta">Feb 2026 — Present · Vancouver, BC</span>
+          <span class="job-meta">Feb 2026 &ndash; Present · Vancouver, BC</span>
         </div>
         <ul>
           <li>Building and leading an <b>end-to-end agentic medical workflow automation</b> platform.</li>
@@ -558,7 +534,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="job-head">
           <h3>Machine Learning Engineer</h3>
           <a class="job-co" href="https://blueboatdata.com/" target="_blank" rel="noopener">Blue Boat Data</a>
-          <span class="job-meta">Nov 2022 — Feb 2026 · Vancouver, BC</span>
+          <span class="job-meta">Nov 2022 &ndash; Feb 2026 · Vancouver, BC</span>
         </div>
         <ul>
           <li>Built and led an <b>end-to-end reliable agentic workflow</b> converting natural-language queries into production-grade analytics.</li>
@@ -575,11 +551,11 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="job-head">
           <h3>Research Assistant</h3>
           <span class="job-co">Simon Fraser University × Huawei Canada</span>
-          <span class="job-meta">Sep 2019 — Nov 2022 · Burnaby, BC</span>
+          <span class="job-meta">Sep 2019 &ndash; Nov 2022 · Burnaby, BC</span>
         </div>
         <ul>
-          <li><b>Human trajectory &amp; pose prediction</b> with a novel <b>non-autoregressive transformer</b> — published at <b>ICRA 2023</b>.</li>
-          <li><b>Probabilistic, model-based intent inference</b> with <b>inverse reinforcement learning</b> for human motion understanding — published at <b>ICRA 2022</b>.</li>
+          <li><b>Human trajectory &amp; pose prediction</b> with a novel <b>non-autoregressive transformer</b>, published at <b>ICRA 2023</b>.</li>
+          <li><b>Probabilistic, model-based intent inference</b> with <b>inverse reinforcement learning</b> for human motion understanding, published at <b>ICRA 2022</b>.</li>
         </ul>
         <div class="tags"><span class="tag">Transformers</span><span class="tag">IRL</span><span class="tag">Motion Prediction</span><span class="tag">PyTorch</span></div>
       </article>
@@ -588,7 +564,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="job-head">
           <h3>ML Research Engineer Intern</h3>
           <a class="job-co" href="https://www.hingehealth.com/" target="_blank" rel="noopener">Hinge Health</a>
-          <span class="job-meta">Aug 2021 — Dec 2021 · San Francisco, CA</span>
+          <span class="job-meta">Aug 2021 &ndash; Dec 2021 · San Francisco, CA</span>
         </div>
         <ul>
           <li>Implemented <b>single-shot, bottom-up 3D human pose estimation</b> from monocular RGB using lightweight, real-time model architectures.</li>
@@ -600,7 +576,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="job-head">
           <h3>Data Engineer</h3>
           <span class="job-co">Rahnema Co.</span>
-          <span class="job-meta">Jan 2018 — Mar 2019 · Tehran, Iran</span>
+          <span class="job-meta">Jan 2018 &ndash; Mar 2019 · Tehran, Iran</span>
         </div>
         <ul>
           <li>Designed <b>microservices and scalable data pipelines</b> powering enterprise analytics dashboards and delivering actionable business insights.</li>
@@ -616,17 +592,18 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
   <div class="wrap">
     <p class="eyebrow">03 · Publications</p>
     <h2 class="sec-title rv">Peer-reviewed work</h2>
-    <p class="sec-lede rv">Top robotics venues, on how machines understand where humans are going.</p>
+    <p class="sec-lede rv">Research on human motion prediction and socially aware robot navigation. 84 citations on <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">Google Scholar</a>.</p>
 
     <article class="pub rv">
       <div class="venue">ICRA<small>2023</small></div>
       <div>
-        <h3>3D Human Pose Prediction With Non-Autoregressive Transformers</h3>
+        <h3>STPOTR: Simultaneous Human Trajectory and Pose Prediction Using a Non-Autoregressive Transformer for Robot Follow-Ahead</h3>
         <p class="auth">M. Mahdavian, P. Nikdel, <b>M. TaherAhmadi</b>, M. Chen</p>
-        <p class="desc">A non-autoregressive transformer that predicts full-body 3D pose and global trajectory jointly — decoding the future in parallel instead of step-by-step, for faster and more accurate long-horizon prediction.</p>
+        <p class="desc">A non-autoregressive transformer that predicts human trajectory and 3D pose simultaneously, decoding future frames in parallel for fast and accurate long-horizon prediction in robot follow-ahead tasks. <i>ICRA 2023, pp. 9959&ndash;9965.</i></p>
         <div class="plinks">
-          <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10160538" target="_blank" rel="noopener">⇢ IEEE Xplore</a>
-          <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">⇢ Scholar</a>
+          <span class="cites">Cited by 51</span>
+          <a href="https://ieeexplore.ieee.org/document/10160538" target="_blank" rel="noopener">&#8674; IEEE Xplore</a>
+          <a href="https://arxiv.org/abs/2209.07600" target="_blank" rel="noopener">&#8674; arXiv</a>
         </div>
       </div>
     </article>
@@ -634,12 +611,12 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
     <article class="pub rv">
       <div class="venue">ICRA<small>2022</small></div>
       <div>
-        <h3>Optimal Control Inspired Probabilistic Model-Based Human Navigational Intent Inference</h3>
-        <p class="auth"><b>M. TaherAhmadi</b>*, P. Agand*, M. Chen, A. Lim</p>
-        <p class="desc">Infers where a person intends to go by modeling humans as noisily-optimal planners — combining inverse reinforcement learning with optimal control for probabilistic intent prediction.</p>
+        <h3>Human Navigational Intent Inference with Probabilistic and Optimal Approaches</h3>
+        <p class="auth">P. Agand, <b>M. TaherAhmadi</b>, A. Lim, M. Chen</p>
+        <p class="desc">Infers where a person intends to go by modeling humans as noisily rational planners, combining probabilistic inference with optimal control for real-time navigational intent prediction. <i>ICRA 2022, pp. 8562&ndash;8568.</i></p>
         <div class="plinks">
-          <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9811883" target="_blank" rel="noopener">⇢ IEEE Xplore</a>
-          <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">⇢ Scholar</a>
+          <span class="cites">Cited by 23</span>
+          <a href="https://ieeexplore.ieee.org/document/9811883" target="_blank" rel="noopener">&#8674; IEEE Xplore</a>
         </div>
       </div>
     </article>
@@ -649,10 +626,10 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
       <div>
         <h3>SFU-Store-Nav: A Multimodal Dataset for Indoor Human Navigation</h3>
         <p class="auth">Z. Zhang, J. Rhim, <b>M. TaherAhmadi</b>, K. Yang, A. Lim, M. Chen</p>
-        <p class="desc">A multimodal dataset capturing how people navigate indoor retail spaces — trajectories, poses, and gaze — enabling research on socially-aware robot navigation. <i>Data in Brief, 33:106539.</i></p>
+        <p class="desc">A multimodal dataset of human trajectories, poses, and gaze collected in an indoor retail setting, supporting research on socially aware robot navigation. <i>Data in Brief, 33:106539.</i></p>
         <div class="plinks">
-          <a href="https://doi.org/10.1016/j.dib.2020.106539" target="_blank" rel="noopener">⇢ DOI</a>
-          <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">⇢ Scholar</a>
+          <span class="cites">Cited by 10</span>
+          <a href="https://doi.org/10.1016/j.dib.2020.106539" target="_blank" rel="noopener">&#8674; DOI</a>
         </div>
       </div>
     </article>
@@ -663,8 +640,8 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <section class="band" id="projects">
   <div class="wrap">
     <p class="eyebrow">04 · Selected Projects</p>
-    <h2 class="sec-title rv">Research &amp; side quests</h2>
-    <p class="sec-lede rv">From adversarial depth estimation to rescue robots — a sampler of work over the years.</p>
+    <h2 class="sec-title rv">Research &amp; engineering projects</h2>
+    <p class="sec-lede rv">Open-source work spanning computer vision, robotics, and applied machine learning, from my <a href="https://github.com/taherahmadi" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">GitHub</a>.</p>
 
     <div class="proj-grid">
       <article class="card rv">
@@ -674,7 +651,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
           <p>Added a discriminator + structural-similarity loss on top of a SOTA depth estimator; improved performance on NYU-v2 when adversarial training is used.</p>
           <div class="foot">
             <div class="tags"><span class="tag">GANs</span><span class="tag">Depth</span></div>
-            <a class="gh" href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+            <span class="stars">&#9733; 2</span><a class="gh" href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
       </article>
@@ -683,7 +660,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="shot"><img loading="lazy" src="images/14/02.jpg" alt="ADAS warning signal showing distance to detected car"><span class="yr">2018</span></div>
         <div class="body">
           <h3>Embedded Deep-Learning ADAS</h3>
-          <p>B.Sc. thesis: a vision-based driver-assistance system on a monocular camera — detects cars &amp; pedestrians, estimates depth, and warns of probable collisions in real time.</p>
+          <p>B.Sc. thesis: a vision-based driver-assistance system on a monocular camera that detects cars &amp; pedestrians, estimates depth, and warns of probable collisions in real time.</p>
           <div class="foot">
             <div class="tags"><span class="tag">Embedded</span><span class="tag">Detection</span><span class="tag">Depth</span></div>
           </div>
@@ -697,7 +674,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
           <p>ROS + Gazebo simulator of realistic signal propagation between robots, built at AIRLab (Politecnico di Milano) to study how comms models change exploration algorithms.</p>
           <div class="foot">
             <div class="tags"><span class="tag">ROS</span><span class="tag">Multi-robot</span></div>
-            <a class="gh" href="https://github.com/taherahmadi/WCS" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+            <span class="stars">&#9733; 6</span><a class="gh" href="https://github.com/taherahmadi/WCS" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
       </article>
@@ -706,10 +683,10 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="shot"><img loading="lazy" src="images/05/00.png" alt="Rescue robot and victim model in simulation"><span class="yr">2016</span></div>
         <div class="body">
           <h3>Victim Detection &amp; 3D Pose for Rescue Robots</h3>
-          <p>Two-stage pipeline: detect lying-down bodies, then reconstruct 3D pose + camera via CNN joints and matching-pursuit sparse representation — from a single 2D image.</p>
+          <p>Two-stage pipeline: detect lying-down bodies, then reconstruct 3D pose + camera via CNN joints and matching-pursuit sparse representation, all from a single 2D image.</p>
           <div class="foot">
             <div class="tags"><span class="tag">3D Pose</span><span class="tag">SAR</span></div>
-            <a class="gh" href="https://github.com/taherahmadi/SOS-VR-Victim-Detection-and-Pose-Estimation" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+            <span class="stars">&#9733; 4</span><a class="gh" href="https://github.com/taherahmadi/SOS-VR-Victim-Detection-and-Pose-Estimation" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
       </article>
@@ -717,11 +694,11 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
       <article class="card rv">
         <div class="shot"><img loading="lazy" src="images/02/RoboCupRescue.png" alt="RoboCup Rescue Simulation"><span class="yr">2016–18</span></div>
         <div class="body">
-          <h3>RoboCup Rescue — Team SOS VR Base Code</h3>
+          <h3>RoboCup Rescue: Team SOS VR Base Code</h3>
           <p>Open-source ROS/Gazebo framework for the Rescue Virtual Robot league: SLAM, navigation, human recognition, multi-agent cooperation. Led the team to 2nd at RoboCup 2017.</p>
           <div class="foot">
             <div class="tags"><span class="tag">ROS</span><span class="tag">SLAM</span><span class="tag">Open source</span></div>
-            <a class="gh" href="https://github.com/SOSVR/base_code-v2" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+            <span class="stars">&#9733; 3</span><a class="gh" href="https://github.com/SOSVR/base_code-v2" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
       </article>
@@ -730,10 +707,65 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
         <div class="shot"><img loading="lazy" src="images/10/01.png" alt="Real data vs auto-regression prediction of power usage"><span class="yr">2016</span></div>
         <div class="body">
           <h3>Power-Usage Time-Series Forecasting</h3>
-          <p>Parametric vs non-parametric models forecasting Ontario's power demand from 15 years of data — a statistical-ML deep dive into what actually generalizes.</p>
+          <p>Parametric vs non-parametric models forecasting Ontario's power demand from 15 years of data. Statistical Machine Learning course project.</p>
           <div class="foot">
             <div class="tags"><span class="tag">Time series</span><span class="tag">Stats ML</span></div>
-            <a class="gh" href="https://github.com/taherahmadi/Power-Usage-Data-Time-Series-Analysis" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+            <span class="stars">&#9733; 1</span><a class="gh" href="https://github.com/taherahmadi/Power-Usage-Data-Time-Series-Analysis" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="shot"><img loading="lazy" src="images/04/Induced_Graph.png" alt="Community graph visualization"><span class="yr">2016</span></div>
+        <div class="body">
+          <h3>Community Detection in Social Networks</h3>
+          <p>Graph partitioning by modularity optimization with the Louvain method, applied to real social network data for the Fanavard International Data Mining Challenge.</p>
+          <div class="foot">
+            <div class="tags"><span class="tag">Graphs</span><span class="tag">Unsupervised</span></div><span class="stars">&#9733; 15</span><a class="gh" href="https://github.com/taherahmadi/Community-Detection-in-Social-Networks" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="shot"><img loading="lazy" src="images/09/00.png" alt="Per-feature regression fits on student grades data"><span class="yr">2016</span></div>
+        <div class="body">
+          <h3>Linear Regression on Student Grades</h3>
+          <p>Implementation and analysis of linear regression with per-feature diagnostics on a student grades dataset. Statistical Machine Learning course project.</p>
+          <div class="foot">
+            <div class="tags"><span class="tag">Regression</span><span class="tag">Stats ML</span></div><span class="stars">&#9733; 8</span><a class="gh" href="https://github.com/taherahmadi/Linear-Regression-on-Student-Grades-Data" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="shot"><img loading="lazy" src="images/08/00.jpg" alt="Face image used in SVD recognition"><span class="yr">2016</span></div>
+        <div class="body">
+          <h3>Face Recognition with SVD</h3>
+          <p>Eigenface-style face recognition built on singular value decomposition, using low-rank projections for identity matching.</p>
+          <div class="foot">
+            <div class="tags"><span class="tag">SVD</span><span class="tag">Recognition</span></div><span class="stars">&#9733; 6</span><a class="gh" href="https://github.com/taherahmadi/Face-Recognition-with-SVD" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="shot"><img loading="lazy" src="images/07/100_approximation.jpg" alt="Rank-100 SVD approximation of a photograph"><span class="yr">2016</span></div>
+        <div class="body">
+          <h3>SVD Image Compressor</h3>
+          <p>Lossy image compression via low-rank SVD approximation, analyzing compression ratio against reconstruction error (MSE).</p>
+          <div class="foot">
+            <div class="tags"><span class="tag">SVD</span><span class="tag">Compression</span></div><span class="stars">&#9733; 2</span><a class="gh" href="https://github.com/taherahmadi/SVD-Image-Compressor" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="shot"><img loading="lazy" src="images/11/00.png" alt="Heart disease dataset visualization"><span class="yr">2016</span></div>
+        <div class="body">
+          <h3>Heart Disease Classification with PGMs</h3>
+          <p>Naive Bayes and probabilistic graphical models on the UCI heart disease dataset, comparing Bayesian network structures over feature subsets.</p>
+          <div class="foot">
+            <div class="tags"><span class="tag">Bayesian</span><span class="tag">PGM</span></div><span class="stars">&#9733; 3</span><a class="gh" href="https://github.com/taherahmadi/Heart-Disease-Classification-using-PGM" target="_blank" rel="noopener" aria-label="GitHub repo"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
       </article>
@@ -749,7 +781,7 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
   <div class="wrap">
     <p class="eyebrow">05 · Toolbox</p>
     <h2 class="sec-title rv">Skills</h2>
-    <p class="sec-lede rv">The stack I reach for, from prototype to production.</p>
+    <p class="sec-lede rv">Technologies used across research and production systems.</p>
     <div class="skill-grid">
       <div class="skill-col rv">
         <h3><span class="sq"></span>Languages</h3>
@@ -775,15 +807,15 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <section class="band" id="awards">
   <div class="wrap">
     <p class="eyebrow">06 · Awards</p>
-    <h2 class="sec-title rv">Competition record</h2>
-    <p class="sec-lede rv">A decade of international robotics podiums — and one very large exam.</p>
+    <h2 class="sec-title rv">Awards &amp; honors</h2>
+    <p class="sec-lede rv">International robotics competition results and academic distinctions.</p>
     <div class="aw-grid">
-      <div class="aw rv"><span class="medal">🥈</span><div><h4>2nd Place — RoboCup 2017 <span class="yr">· Nagoya</span></h4><p>Team SOS VR · Rescue Simulation, Virtual Robot league</p></div></div>
-      <div class="aw rv"><span class="medal">🥇</span><div><h4>1st Place — RoboCup IranOpen 2017 <span class="yr">· Tehran</span></h4><p>Team SOS VR · Rescue Simulation, Virtual Robot league</p></div></div>
-      <div class="aw rv"><span class="medal">🥉</span><div><h4>3rd Place ×2 — FIRA RoboWorld Cup 2018 <span class="yr">· Taichung</span></h4><p>Team MCS · SimuroSot Miro-Middle &amp; RoboChallenge</p></div></div>
-      <div class="aw rv"><span class="medal">🥉</span><div><h4>3rd Place — RoboCup 2015 <span class="yr">· Hefei</span></h4><p>Teen-size humanoid soccer league</p></div></div>
+      <div class="aw rv"><span class="medal">🥈</span><div><h4>2nd Place · RoboCup 2017 <span class="yr">· Nagoya</span></h4><p>Team SOS VR · Rescue Simulation, Virtual Robot league</p></div></div>
+      <div class="aw rv"><span class="medal">🥇</span><div><h4>1st Place · RoboCup IranOpen 2017 <span class="yr">· Tehran</span></h4><p>Team SOS VR · Rescue Simulation, Virtual Robot league</p></div></div>
+      <div class="aw rv"><span class="medal">🥉</span><div><h4>3rd Place ×2 · FIRA RoboWorld Cup 2018 <span class="yr">· Taichung</span></h4><p>Team MCS · SimuroSot Miro-Middle &amp; RoboChallenge</p></div></div>
+      <div class="aw rv"><span class="medal">🥉</span><div><h4>3rd Place · RoboCup 2015 <span class="yr">· Hefei</span></h4><p>Teen-size humanoid soccer league</p></div></div>
       <div class="aw rv"><span class="medal">🎓</span><div><h4>Computing Graduate Fellowship <span class="yr">· 2020</span></h4><p>Simon Fraser University</p></div></div>
-      <div class="aw rv"><span class="medal">Σ</span><div><h4>Top 0.03% — National University Entry Exam <span class="yr">· 2013</span></h4><p>Among 300,000+ participants, Iran</p></div></div>
+      <div class="aw rv"><span class="medal">Σ</span><div><h4>Top 0.03% · National University Entry Exam <span class="yr">· 2013</span></h4><p>Among 300,000+ participants, Iran</p></div></div>
     </div>
   </div>
 </section>
@@ -797,13 +829,13 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
       <div class="edu rv">
         <div class="deg">M.Sc. Computing Science</div>
         <h3>Simon Fraser University</h3>
-        <div class="when">Sep 2019 — Aug 2022 · British Columbia, Canada</div>
+        <div class="when">Sep 2019 &ndash; Aug 2022 · British Columbia, Canada</div>
         <p><i>Thesis:</i> Probabilistic and Optimal Human Navigational Intent Prediction</p>
       </div>
       <div class="edu rv">
         <div class="deg">B.Sc. Computer Engineering</div>
         <h3>Amirkabir University of Technology<br><span style="font-weight:400;font-size:14px;color:var(--muted)">(Tehran Polytechnic)</span></h3>
-        <div class="when">Jul 2013 — Jul 2018 · Tehran, Iran</div>
+        <div class="when">Jul 2013 &ndash; Jul 2018 · Tehran, Iran</div>
         <p><i>Thesis:</i> Design and Implementation of an Embedded Deep-Learning Based Advanced Driver-Assistance System (ADAS)</p>
       </div>
     </div>
@@ -814,8 +846,8 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <section class="contact" id="contact">
   <div class="wrap">
     <p class="eyebrow" style="justify-content:center">08 · Contact<span style="display:none"></span></p>
-    <h2 class="rv">Let's build something reliable.</h2>
-    <p class="rv">Whether it's agentic systems, human-motion models, or a robot that needs to stop hallucinating — my inbox is open.</p>
+    <h2 class="rv">Get in touch</h2>
+    <p class="rv">I welcome conversations about agentic systems, applied ML research, and engineering opportunities. Email is the best way to reach me.</p>
     <a class="email-line rv" id="emailBtn" href="mailto:14taher@gmail.com">
       <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor"><path d="M.05 3.56A1.5 1.5 0 0 1 1.5 2.5h13a1.5 1.5 0 0 1 1.45 1.06L8 8.58.05 3.56zM0 4.7v7.3a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 12V4.7L8 9.75.0 4.7z"/></svg>
       14taher@gmail.com
@@ -835,11 +867,10 @@ footer{border-top:1px solid var(--line-soft);padding:34px 0;background:var(--bg-
 <footer>
   <div class="wrap foot-in">
     <span>© 2026 Taher Ahmadi · Vancouver, BC</span>
-    <span>designed &amp; built with <span style="color:var(--accent)">▹</span> no framework, one file · <a href="https://github.com/taherahmadi/taherahmadi.github.io" target="_blank" rel="noopener">source</a></span>
+    <span><a href="https://github.com/taherahmadi/taherahmadi.github.io" target="_blank" rel="noopener">Source on GitHub</a></span>
   </div>
 </footer>
 
-<div id="robo" aria-hidden="true">🤖</div>
 
 <script>
 (function(){
@@ -870,10 +901,9 @@ $("#themeBtn").addEventListener("click",function(){
 /* ---------- typed role ---------- */
 var roles=[
   "Machine Learning Research Engineer",
-  "Agentic-systems architect",
-  "Human-motion prediction researcher",
-  "Robotics competitor, reformed",
-  "Making LLMs deterministic since 2022"
+  "Agentic Systems & LLMs",
+  "Computer Vision & Robotics",
+  "Human Motion Prediction"
 ];
 var typedEl=$("#typed"),ri=0,ci=0,del=false;
 (function tick(){
@@ -987,19 +1017,6 @@ $("#emailBtn").addEventListener("click",function(ev){
   });
 });
 
-/* ---------- console + konami robot ---------- */
-console.log("%c▹ taher ahmadi","font-size:20px;font-weight:700;color:#4fd8c0");
-console.log("%cHiring? The CV is at /docs/CV/Taherahmadi_CV.pdf — or try the Konami code.","color:#8593a4");
-var seq=[38,38,40,40,37,39,37,39,66,65],pos=0;
-addEventListener("keydown",function(e){
-  pos=(e.keyCode===seq[pos])?pos+1:0;
-  if(pos===seq.length){pos=0;
-    var r=$("#robo");
-    r.style.transform="translate("+(innerWidth*.5+90)+"px,-"+(innerHeight*.55+90)+"px) rotate(720deg) scale(2.2)";
-    setTimeout(function(){r.style.transform=""},2600);
-    console.log("%c🤖 beep boop — RoboCup 2017, 2nd place. It remembers.","color:#f0b45e");
-  }
-});
 })();
 </script>
 </body>
