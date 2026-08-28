@@ -248,3 +248,13 @@ The generator's auto-selected "FAQ/Documentation Landing" pattern was rejected a
 - Light mode kept as a supported toggle (existing site behavior); light tokens derived from the same palette with AA contrast (accent text on light backgrounds uses green-700 #15803D).
 - No em dashes in any copy (owner style rule).
 - Motion dial 3/10: reveal and hover micro-interactions only, full reduced-motion support.
+
+## Craft Pass (awesome-ux-skills)
+
+Applied `craft` (12 rules), `cognitive-load-conversion`, and `dieter-rams-principles` from the awesome-ux-skills collection:
+- One primary CTA per decision point (hero reduced to Download CV + Get in touch)
+- Featured emphasis: ICRA 2023 publication (left accent bar, larger type), first project card spans 2 columns
+- Alternating section backgrounds (publications, awards on sunken band) to break monotony
+- Spacing normalized to the 4px scale; tabular-nums on stat and date figures
+- Elevation language is borders only (portrait shadow removed); designed :active states
+- Motion tightened to 400-550ms ease-out entrances; no gradients (dot texture only), no glow, no transition:all

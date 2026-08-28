@@ -77,6 +77,7 @@ h1,h2,h3,h4{line-height:1.2;letter-spacing:-.02em;margin:0}
 h2.sec-title{font-family:var(--mono);font-size:clamp(24px,3.4vw,34px);font-weight:600;margin:0 0 10px}
 .sec-lede{color:var(--muted);max-width:64ch;margin:0 0 40px;font-size:15.5px}
 section.band{padding:88px 0;border-top:1px solid var(--line-soft);position:relative}
+section.band.alt{background:var(--bg-sunk)}
 .tag{
   font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:3px 9px;border-radius:5px;
   border:1px solid var(--line);color:var(--muted);background:var(--bg);white-space:nowrap;
@@ -134,12 +135,12 @@ nav.links a.on{color:var(--accent)}
 .avail{
   display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;
   letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
-  border:1px solid var(--line);border-radius:6px;padding:6px 13px;background:var(--bg-elev);margin-bottom:26px;
+  border:1px solid var(--line);border-radius:6px;padding:6px 12px;background:var(--bg-elev);margin-bottom:24px;
 }
 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-solid)}
 h1.name{font-family:var(--mono);font-size:clamp(38px,6.6vw,72px);font-weight:600;letter-spacing:-.04em;margin:0 0 14px}
 h1.name .ln{display:block;overflow:hidden}
-h1.name .ln > i{display:block;font-style:normal;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+h1.name .ln > i{display:block;font-style:normal;animation:rise .55s ease-out both}
 h1.name .ln:nth-child(2) > i{animation-delay:.08s}
 @keyframes rise{from{transform:translateY(105%)}to{transform:translateY(0)}}
 .role{font-family:var(--mono);font-size:clamp(13px,1.6vw,16px);color:var(--accent);margin:0 0 22px}
@@ -149,12 +150,14 @@ p.pitch b{color:var(--text);font-weight:600}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px}
 .btn{
   display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14px;font-weight:500;
-  font-family:var(--mono);padding:11px 18px;border-radius:7px;border:1px solid var(--line);
+  font-family:var(--mono);padding:12px 20px;border-radius:7px;border:1px solid var(--line);
   transition:border-color .2s,color .2s,filter .2s;background:var(--bg-elev);color:var(--text);cursor:pointer;
 }
 .btn:hover{border-color:var(--accent-solid);color:var(--accent)}
 .btn.solid{background:var(--accent-solid);border-color:var(--accent-solid);color:var(--on-accent)}
 .btn.solid:hover{color:var(--on-accent);filter:brightness(1.1)}
+.btn:active,.btn-cv:active{transform:translateY(1px)}
+.icon-btn:active{transform:translateY(1px)}
 .socials{display:flex;gap:20px;flex-wrap:wrap}
 .socials a{
   text-decoration:none;color:var(--muted);font-size:13px;font-family:var(--mono);
@@ -165,7 +168,7 @@ p.pitch b{color:var(--text);font-weight:600}
 .portrait{position:relative;width:264px;flex-shrink:0;margin:0}
 .portrait img{
   width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;
-  border:1px solid var(--line);box-shadow:var(--shadow-md);
+  border:1px solid var(--line);
 }
 .portrait::after{
   content:"";position:absolute;top:10px;left:10px;right:-10px;bottom:-10px;border-radius:10px;z-index:-1;
@@ -181,7 +184,7 @@ p.pitch b{color:var(--text);font-weight:600}
 .strip{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--bg)}
 .strip-in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft)}
 .stat{background:var(--bg);padding:26px 20px;text-align:center}
-.stat .n{font-size:clamp(24px,3.2vw,34px);font-weight:600;font-family:var(--mono);color:var(--accent)}
+.stat .n{font-size:clamp(24px,3.2vw,34px);font-weight:600;font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
 .stat .l{font-size:11.5px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-family:var(--mono);margin-top:6px}
 @media(max-width:700px){.strip-in{grid-template-columns:repeat(2,1fr)}}
 
@@ -220,7 +223,7 @@ p.pitch b{color:var(--text);font-weight:600}
 .job-co{font-size:14px;color:var(--accent);font-weight:500;text-decoration:none;border-bottom:1px dashed transparent}
 a.job-co{cursor:pointer}
 a.job-co:hover{border-bottom-color:var(--accent)}
-.job-meta{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.job-meta{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
 .job ul{margin:12px 0 14px;padding-left:2px;list-style:none;display:grid;gap:8px}
 .job li{position:relative;padding-left:20px;color:var(--text-2);font-size:15px;line-height:1.6}
 .job li::before{content:">";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:13px;top:2px}
@@ -250,7 +253,10 @@ a.job-co:hover{border-bottom-color:var(--accent)}
   display:inline-flex;align-items:center;gap:5px;border-bottom:1px solid transparent;cursor:pointer;
 }
 .pub .plinks a:hover{border-bottom-color:var(--accent)}
-.pub .cites{font-family:var(--mono);font-size:11.5px;color:var(--warn);background:var(--warn-wash);border-radius:5px;padding:2px 9px}
+.pub .cites{font-family:var(--mono);font-size:11.5px;color:var(--warn);background:var(--warn-wash);border-radius:5px;padding:2px 8px}
+.pub.featured{border-left:3px solid var(--accent-solid);padding:28px 30px}
+.pub.featured h3{font-size:19px}
+.pub.featured .desc{font-size:15px}
 @media(max-width:620px){.pub{grid-template-columns:1fr;gap:14px}.venue{justify-self:start;padding:8px 14px}}
 
 /* ---------- projects ---------- */
@@ -260,6 +266,7 @@ a.job-co:hover{border-bottom-color:var(--accent)}
   display:flex;flex-direction:column;transition:border-color .2s,transform .2s;
 }
 .card:hover{border-color:var(--accent-solid);transform:translateY(-2px)}
+@media(min-width:720px){.card.wide{grid-column:span 2}}
 .card .shot{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bg-sunk);border-bottom:1px solid var(--line-soft)}
 .card .shot img{width:100%;height:100%;object-fit:cover}
 .card .shot .yr{
@@ -287,7 +294,7 @@ a.job-co:hover{border-bottom-color:var(--accent)}
 .skill-col h3 .sq{width:8px;height:8px;border-radius:2px;background:var(--accent-solid);flex-shrink:0}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chip{
-  font-family:var(--mono);font-size:12.5px;padding:5px 11px;border-radius:6px;border:1px solid var(--line);
+  font-family:var(--mono);font-size:12.5px;padding:4px 12px;border-radius:6px;border:1px solid var(--line);
   color:var(--text-2);background:var(--bg);cursor:default;transition:border-color .18s,color .18s;
 }
 .chip:hover{border-color:var(--accent-solid);color:var(--accent)}
@@ -343,7 +350,7 @@ footer{border-top:1px solid var(--line-soft);padding:30px 0;background:var(--bg)
 .foot-in a:hover{color:var(--accent)}
 
 /* ---------- reveal on scroll ---------- */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .4s ease-out,transform .4s ease-out}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
@@ -397,8 +404,7 @@ footer{border-top:1px solid var(--line-soft);padding:30px 0;background:var(--bg)
           turn natural language into guaranteed-correct analytics. Based in Vancouver, BC.
         </p>
         <div class="cta">
-          <a class="btn solid" href="#experience">See my work →</a>
-          <a class="btn" href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="btn solid" href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener">Download CV</a>
           <a class="btn" href="mailto:14taher@gmail.com">Get in touch</a>
         </div>
         <div class="socials">
@@ -564,13 +570,13 @@ footer{border-top:1px solid var(--line-soft);padding:30px 0;background:var(--bg)
 </section>
 
 <!-- ================= PUBLICATIONS ================= -->
-<section class="band" id="publications">
+<section class="band alt" id="publications">
   <div class="wrap">
     <p class="eyebrow">03 · Publications</p>
     <h2 class="sec-title rv">Peer-reviewed work</h2>
     <p class="sec-lede rv">Research on human motion prediction and socially aware robot navigation. 84 citations on <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">Google Scholar</a>.</p>
 
-    <article class="pub rv">
+    <article class="pub featured rv">
       <div class="venue">ICRA<small>2023</small></div>
       <div>
         <h3>STPOTR: Simultaneous Human Trajectory and Pose Prediction Using a Non-Autoregressive Transformer for Robot Follow-Ahead</h3>
@@ -620,7 +626,7 @@ footer{border-top:1px solid var(--line-soft);padding:30px 0;background:var(--bg)
     <p class="sec-lede rv">Open-source work spanning computer vision, robotics, and applied machine learning, from my <a href="https://github.com/taherahmadi" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">GitHub</a>.</p>
 
     <div class="proj-grid">
-      <article class="card rv">
+      <article class="card wide rv">
         <div class="shot"><img loading="lazy" src="images/15/2.png" alt="Qualitative comparison of estimated depth maps"><span class="yr">2019</span></div>
         <div class="body">
           <h3>Adversarial Training for Monocular Depth Estimation</h3>
@@ -780,7 +786,7 @@ footer{border-top:1px solid var(--line-soft);padding:30px 0;background:var(--bg)
 </section>
 
 <!-- ================= AWARDS ================= -->
-<section class="band" id="awards">
+<section class="band alt" id="awards">
   <div class="wrap">
     <p class="eyebrow">06 · Awards</p>
     <h2 class="sec-title rv">Awards &amp; honors</h2>
