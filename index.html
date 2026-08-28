@@ -5,169 +5,243 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Taher Ahmadi | Machine Learning Research Engineer</title>
 <meta name="author" content="Taher Ahmadi">
-<meta name="description" content="Taher Ahmadi, Machine Learning Research Engineer in Vancouver, BC. 7+ years across robotics, computer vision, and generative AI.">
+<meta name="description" content="Taher Ahmadi, Machine Learning Research Engineer in Vancouver, BC. Robotics, computer vision, generative AI, and agentic systems.">
 <link rel="canonical" href="https://taherahmadi.github.io/">
 <link rel="icon" href="./images/favicon.ico">
 <meta property="og:site_name" content="Taher Ahmadi">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Taher Ahmadi | Machine Learning Research Engineer">
-<meta property="og:description" content="Agentic systems, LLM post-training, human motion prediction. Vancouver, BC.">
+<meta property="og:description" content="Teaching machines to see, predict, and act. Vancouver, BC.">
 <meta property="og:url" content="https://taherahmadi.github.io/">
 <meta property="og:image" content="https://taherahmadi.github.io/images/profile_photo.jpg">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   Taher Ahmadi, personal site. v5: minimal single column.
-   One family, near-monochrome, links underlined, projects on
-   their own page. As little design as possible.
+   Taher Ahmadi, personal site. v6: minimal + kinetic.
+   One flowing field of trajectories, little else. Content stays
+   sparse; motion carries the character. No libraries.
    ============================================================ */
 
 :root{
-  --bg:#FCFCFA; --ink:#1C1C1A; --ink-2:#4C4C48; --faint:#8A8A84;
-  --rule:#E4E4DE; --link:#1C1C1A;
+  --bg:#FAFAF8; --ink:#191A1C; --ink-2:#494B50; --faint:#898C93;
+  --rule:#E4E4E0; --accent:#3450C8; --accent-2:#8A97B8;
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --disp:"Space Grotesk",var(--sans);
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
 html[data-theme="dark"]{
-  --bg:#151514; --ink:#E9E9E4; --ink-2:#B4B4AC; --faint:#7E7E76;
-  --rule:#2C2C29; --link:#E9E9E4;
+  --bg:#0D0E11; --ink:#EBECEE; --ink-2:#B3B6BC; --faint:#7C8087;
+  --rule:#26282D; --accent:#8FA3FF; --accent-2:#4A5470;
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:var(--sans);font-size:15.5px;line-height:1.75;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  transition:background-color 300ms ease,color 300ms ease;
 }
-main{max-width:620px;margin:0 auto;padding:88px 24px 72px}
-::selection{background:var(--ink);color:var(--bg)}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-
-a{
-  color:var(--link);text-decoration:underline;
-  text-decoration-color:var(--rule);text-underline-offset:3px;
-  transition:text-decoration-color 150ms ease;
-}
-a:hover{text-decoration-color:var(--ink)}
+::selection{background:var(--accent);color:var(--bg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 b{font-weight:600}
 
-h1{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.4}
-.sub{color:var(--faint);margin:2px 0 0;font-size:14.5px}
+a{
+  color:var(--ink);text-decoration:none;
+  background-image:linear-gradient(var(--accent),var(--accent));
+  background-repeat:no-repeat;background-position:0 100%;background-size:100% 1px;
+  transition:color 200ms ease,background-size 250ms ease;
+  padding-bottom:1px;
+}
+a:hover{color:var(--accent);background-size:0% 1px}
+
+/* ---------------- theme toggle ---------------- */
+#themeBtn{
+  position:fixed;top:22px;right:24px;z-index:10;
+  background:none;border:none;padding:6px 2px;cursor:pointer;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);transition:color 200ms ease;
+}
+#themeBtn:hover{color:var(--accent)}
+
+/* ---------------- hero ---------------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+#field{position:absolute;inset:0;width:100%;height:100%}
+.hero-in{
+  position:relative;z-index:2;width:100%;max-width:960px;margin:0 auto;
+  padding:0 28px;
+}
+.hero h1{
+  font-family:var(--disp);font-size:15px;font-weight:500;letter-spacing:.02em;
+  margin:0 0 26px;color:var(--ink-2);
+}
+.hero h1 span{color:var(--faint);font-family:var(--mono);font-size:12px;letter-spacing:.06em;margin-left:14px}
+.tagline{
+  font-family:var(--disp);font-weight:600;letter-spacing:-.03em;
+  font-size:clamp(34px,7vw,76px);line-height:1.06;margin:0 0 30px;
+}
+.tagline .verb{position:relative;display:inline-block;animation:vpulse 9s ease-in-out infinite}
+.tagline .verb:nth-child(2){animation-delay:3s}
+.tagline .verb:nth-child(3){animation-delay:6s}
+@keyframes vpulse{
+  0%,28%,100%{color:inherit}
+  8%,18%{color:var(--accent)}
+}
+.hero .sub{
+  max-width:52ch;color:var(--ink-2);font-size:clamp(15px,1.8vw,17px);margin:0 0 38px;
+}
+.hero-links{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline}
+.hero-links a{font-size:14px}
+.hero-links .cvl{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--rule);border-radius:999px;padding:10px 18px;background:none;
+  transition:border-color 200ms ease,color 200ms ease;
+}
+.hero-links .cvl:hover{border-color:var(--accent);color:var(--accent);background-size:0% 0}
+.scroll-cue{
+  position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--faint);text-decoration:none;background:none;padding:8px;
+  animation:cue 3s ease-in-out infinite;
+}
+.scroll-cue:hover{color:var(--accent)}
+@keyframes cue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+/* ---------------- content ---------------- */
+main{max-width:640px;margin:0 auto;padding:96px 28px 80px}
+section{margin-bottom:88px}
+section:last-of-type{margin-bottom:0}
+h2{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 24px;
+}
 p{margin:0 0 20px;color:var(--ink-2);max-width:62ch}
 p:last-child{margin-bottom:0}
 
-section{margin-top:64px}
-h2{
-  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);margin:0 0 20px;
-}
-
-/* entries: date column + text */
-.e{display:grid;grid-template-columns:118px minmax(0,1fr);gap:20px;padding:10px 0}
+.e{display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;padding:12px 0}
 .e + .e{border-top:1px solid var(--rule)}
 .e .d{font-family:var(--mono);font-size:12px;color:var(--faint);padding-top:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .e .t{color:var(--ink-2)}
 .e .t b{color:var(--ink)}
-.e .t .co{color:var(--ink-2)}
 .e .t small{display:block;color:var(--faint);font-size:13.5px;line-height:1.65;margin-top:1px}
-@media(max-width:540px){.e{grid-template-columns:1fr;gap:2px;padding:12px 0}}
+@media(max-width:540px){.e{grid-template-columns:1fr;gap:2px;padding:14px 0}}
 
-/* publications */
-.p-entry{margin:0 0 22px}
+.p-entry{margin:0 0 24px}
 .p-entry:last-child{margin-bottom:0}
-.p-entry .t{color:var(--ink);font-weight:500;line-height:1.55}
-.p-entry .m{color:var(--faint);font-size:13.5px;line-height:1.65;margin-top:2px}
+.p-entry .t{font-weight:500;line-height:1.55}
+.p-entry .m{color:var(--faint);font-size:13.5px;line-height:1.65;margin-top:3px}
 .p-entry .m i{font-style:italic}
-.p-entry .m a{color:var(--faint)}
-.p-entry .m a:hover{color:var(--ink)}
+.p-entry .m a{color:var(--faint);background-image:linear-gradient(var(--faint),var(--faint))}
+.p-entry .m a:hover{color:var(--accent)}
 
-footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--rule)}
-.links{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 14px;padding:0;list-style:none}
+footer{margin-top:96px;padding-top:28px;border-top:1px solid var(--rule)}
+.links{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0 0 16px;padding:0;list-style:none}
 .links a{font-size:14px}
-.fine{font-family:var(--mono);font-size:11.5px;color:var(--faint);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
-#themeBtn{
-  background:none;border:none;padding:0;font-family:var(--mono);font-size:11.5px;
-  color:var(--faint);cursor:pointer;text-decoration:underline;
-  text-decoration-color:var(--rule);text-underline-offset:3px;transition:color 150ms ease;
-}
-#themeBtn:hover{color:var(--ink)}
+.fine{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--faint)}
+
+/* ---------------- reveals ---------------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 600ms cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+.stagger > *{opacity:0;transform:translateY(16px);transition:opacity 550ms cubic-bezier(.22,.61,.36,1),transform 550ms cubic-bezier(.22,.61,.36,1)}
+.stagger.in > *{opacity:1;transform:none}
+.stagger.in > *:nth-child(1){transition-delay:0ms}
+.stagger.in > *:nth-child(2){transition-delay:70ms}
+.stagger.in > *:nth-child(3){transition-delay:140ms}
+.stagger.in > *:nth-child(4){transition-delay:210ms}
+.stagger.in > *:nth-child(5){transition-delay:280ms}
+.stagger.in > *:nth-child(6){transition-delay:350ms}
 
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .rv,.stagger > *{opacity:1;transform:none}
+  .scroll-cue{animation:none}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
-<main>
 
-<header>
-  <h1>Taher Ahmadi</h1>
-  <p class="sub">Machine Learning Research Engineer · Vancouver, BC, Canada</p>
+<button id="themeBtn" type="button" aria-label="Toggle color theme">dark</button>
+
+<header class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="hero-in">
+    <h1>Taher Ahmadi <span>Machine Learning Research Engineer · Vancouver, BC</span></h1>
+    <p class="tagline">Teaching machines to<br>
+      <span class="verb">see</span>, <span class="verb">predict</span>, and <span class="verb">act</span>.
+    </p>
+    <p class="sub">
+      Seven years across robotics, computer vision, and generative AI,
+      from ICRA papers on human motion prediction to agentic LLM systems
+      running in production.
+    </p>
+    <div class="hero-links">
+      <a class="cvl" href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a href="projects.html">Projects</a>
+      <a href="https://github.com/taherahmadi" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
+      <a href="mailto:14taher@gmail.com">Email</a>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to content">Scroll</a>
 </header>
 
-<section aria-label="About">
-  <p style="margin-top:40px">
-    I build ML systems that are deterministic, well typed, and reliable: 7+ years across
-    robotics, computer vision, and generative AI. Currently an AI Engineer at <b>Waive Medical</b>,
-    building agentic medical-workflow automation, document understanding, and named-entity
-    recognition for clinical pipelines.
+<main>
+
+<section id="about" class="rv">
+  <h2>About</h2>
+  <p>
+    I move between research and production. I have taught robots to anticipate where
+    people will walk (two <b>ICRA</b> papers, 84 citations), shipped <b>real-time 3D human
+    pose estimation</b> in digital health, and built <b>multi-agent LLM systems</b> that answer
+    enterprise questions with guaranteed-correct SQL.
   </p>
   <p>
-    I hold an M.Sc. in Computing Science from <a href="https://www.sfu.ca/" target="_blank" rel="noopener">Simon Fraser University</a>,
-    where I worked on probabilistic human navigational intent prediction with
-    <a href="https://sfumars.com/" target="_blank" rel="noopener">MARS Lab</a> and
-    <a href="https://www.rosielab.ca/" target="_blank" rel="noopener">ROSIE Lab</a>.
-    Research with Huawei Canada led to two ICRA papers on human trajectory and pose prediction,
-    with 84 citations on <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
-    Before that: competitive robotics at RoboCup, including a 2nd place worldwide in the
-    Rescue Simulation league.
-  </p>
-  <p>
-    A selection of my open-source research and engineering work is on the
-    <a href="projects.html">projects page</a>.
+    Today I am an AI Engineer at <b>Waive Medical</b>, building agentic automation for
+    clinical workflows. Before all of it: international robotics competitions with
+    <b>RoboCup</b>, including a 2nd place worldwide in rescue simulation.
   </p>
 </section>
 
-<section aria-labelledby="h-exp">
-  <h2 id="h-exp">Experience</h2>
+<section class="stagger" id="experience">
+  <h2>Experience</h2>
   <div class="e">
     <div class="d">2026 &ndash; now</div>
     <div class="t"><b>AI Engineer</b>, Waive Medical
-      <small>Agentic medical-workflow automation: document understanding and NER for clinical pipelines.</small>
+      <small>Agentic medical-workflow automation: document understanding and NER.</small>
     </div>
   </div>
   <div class="e">
     <div class="d">2022 &ndash; 2026</div>
-    <div class="t"><b>Machine Learning Engineer</b>, <a class="co" href="https://blueboatdata.com/" target="_blank" rel="noopener">Blue Boat Data</a>
-      <small>Multi-agent analytics engine converting natural language into guaranteed-correct SQL through a typed intermediate representation; automated over 70% of customer queries.</small>
+    <div class="t"><b>Machine Learning Engineer</b>, <a href="https://blueboatdata.com/" target="_blank" rel="noopener">Blue Boat Data</a>
+      <small>Multi-agent analytics: natural language to guaranteed-correct SQL, 70%+ of customer queries automated.</small>
     </div>
   </div>
   <div class="e">
     <div class="d">2019 &ndash; 2022</div>
     <div class="t"><b>Research Assistant</b>, Simon Fraser University × Huawei Canada
-      <small>Human trajectory and pose prediction with non-autoregressive transformers and inverse reinforcement learning (ICRA 2022, ICRA 2023).</small>
+      <small>Human trajectory and pose prediction with transformers and IRL.</small>
     </div>
   </div>
   <div class="e">
     <div class="d">2021</div>
-    <div class="t"><b>ML Research Engineer Intern</b>, <a class="co" href="https://www.hingehealth.com/" target="_blank" rel="noopener">Hinge Health</a>
-      <small>Single-shot, bottom-up 3D human pose estimation from monocular RGB in real time.</small>
+    <div class="t"><b>ML Research Engineer Intern</b>, <a href="https://www.hingehealth.com/" target="_blank" rel="noopener">Hinge Health</a>
+      <small>Real-time 3D human pose estimation from monocular RGB.</small>
     </div>
   </div>
   <div class="e">
     <div class="d">2018 &ndash; 2019</div>
     <div class="t"><b>Data Engineer</b>, Rahnema Co.
-      <small>Microservices and scalable data pipelines for enterprise analytics.</small>
+      <small>Microservices and data pipelines for enterprise analytics.</small>
     </div>
   </div>
 </section>
 
-<section aria-labelledby="h-pub">
-  <h2 id="h-pub">Publications</h2>
+<section class="stagger" id="publications">
+  <h2>Publications</h2>
   <div class="p-entry">
     <div class="t"><a href="https://ieeexplore.ieee.org/document/10160538" target="_blank" rel="noopener">STPOTR: Simultaneous Human Trajectory and Pose Prediction Using a Non-Autoregressive Transformer for Robot Follow-Ahead</a></div>
     <div class="m">M. Mahdavian, P. Nikdel, <b>M. TaherAhmadi</b>, M. Chen · <i>ICRA 2023</i> · Cited by 51 · <a href="https://arxiv.org/abs/2209.07600" target="_blank" rel="noopener">arXiv</a></div>
@@ -182,32 +256,19 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--rule)}
   </div>
 </section>
 
-<section aria-labelledby="h-aw">
-  <h2 id="h-aw">Awards</h2>
-  <div class="e"><div class="d">2020</div><div class="t">Computing Graduate Fellowship, Simon Fraser University</div></div>
-  <div class="e"><div class="d">2018</div><div class="t">3rd Place ×2, FIRA RoboWorld Cup, Taichung</div></div>
-  <div class="e"><div class="d">2017</div><div class="t">2nd Place, RoboCup Rescue Simulation, Nagoya · 1st Place, RoboCup IranOpen, Tehran</div></div>
-  <div class="e"><div class="d">2015</div><div class="t">3rd Place, RoboCup humanoid soccer, Hefei</div></div>
-  <div class="e"><div class="d">2013</div><div class="t">Top 0.03% of 300,000+, National University Entry Exam, Iran</div></div>
-</section>
-
-<section aria-labelledby="h-edu">
-  <h2 id="h-edu">Education</h2>
+<section class="stagger" id="education">
+  <h2>Education</h2>
   <div class="e">
     <div class="d">2019 &ndash; 2022</div>
-    <div class="t"><b>M.Sc. Computing Science</b>, Simon Fraser University
-      <small>Thesis: Probabilistic and Optimal Human Navigational Intent Prediction.</small>
-    </div>
+    <div class="t"><b>M.Sc. Computing Science</b>, Simon Fraser University</div>
   </div>
   <div class="e">
     <div class="d">2013 &ndash; 2018</div>
-    <div class="t"><b>B.Sc. Computer Engineering</b>, Amirkabir University of Technology
-      <small>Thesis: an embedded deep-learning advanced driver-assistance system (ADAS).</small>
-    </div>
+    <div class="t"><b>B.Sc. Computer Engineering</b>, Amirkabir University of Technology</div>
   </div>
 </section>
 
-<footer>
+<footer class="rv">
   <ul class="links">
     <li><a href="mailto:14taher@gmail.com">14taher@gmail.com</a></li>
     <li><a href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
@@ -216,28 +277,125 @@ footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--rule)}
     <li><a href="https://www.linkedin.com/in/taher-ahmadi" target="_blank" rel="noopener">LinkedIn</a></li>
     <li><a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></li>
   </ul>
-  <div class="fine">
-    <span>© 2026 Taher Ahmadi</span>
-    <button id="themeBtn" type="button" aria-label="Toggle color theme">dark mode</button>
-  </div>
+  <div class="fine">© 2026 Taher Ahmadi</div>
 </footer>
 
 </main>
+
 <script>
 (function(){
 "use strict";
-var root=document.documentElement,btn=document.getElementById("themeBtn"),saved=null;
+var root=document.documentElement;
+var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- theme ---------- */
+var btn=document.getElementById("themeBtn"),saved=null;
 try{saved=localStorage.getItem("ta-theme")}catch(e){}
 if(saved==="dark"){root.setAttribute("data-theme","dark")}
 else if(!saved&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){root.setAttribute("data-theme","dark")}
-function label(){btn.textContent=root.hasAttribute("data-theme")?"light mode":"dark mode"}
+function label(){btn.textContent=root.hasAttribute("data-theme")?"light":"dark"}
 label();
+
+/* ---------- flow field: trajectories through a vector field ----------
+   A nod to human motion prediction. Cheap layered-sine field, particle
+   trails with alpha fade. Pauses offscreen. Static under reduced motion. */
+var cv=document.getElementById("field"),ctx=cv.getContext("2d");
+var W,H,DPR,parts=[],t=0,raf=null,C={};
+var mouse={x:-1e5,y:-1e5};
+
+function readColors(){
+  var cs=getComputedStyle(root);
+  C.bg=cs.getPropertyValue("--bg").trim();
+  C.accent=cs.getPropertyValue("--accent").trim();
+  C.accent2=cs.getPropertyValue("--accent-2").trim();
+  var dark=root.hasAttribute("data-theme");
+  C.a1=dark?.32:.14;C.a2=dark?.48:.26;C.fade=dark?.055:.075;
+}
+function resize(){
+  DPR=Math.min(devicePixelRatio||1,2);
+  var r=cv.parentNode.getBoundingClientRect();
+  W=cv.width=Math.floor(r.width*DPR);H=cv.height=Math.floor(r.height*DPR);
+  cv.style.width=r.width+"px";cv.style.height=r.height+"px";
+  var n=Math.min(520,Math.floor(r.width*r.height/3600));
+  parts=[];
+  for(var i=0;i<n;i++)parts.push(spawn({}));
+  readColors();
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(reduced){prerender()}
+}
+function spawn(p){p.x=Math.random()*W;p.y=Math.random()*H;p.life=120+Math.random()*260;return p}
+function angle(x,y,tt){
+  var nx=x/W*4.4,ny=y/H*4.4;
+  return Math.sin(nx*1.6+tt*.32)+Math.cos(ny*1.9-tt*.24)
+       + .8*Math.sin((nx+ny)*1.1+tt*.15);
+}
+function step(){
+  t+=.016;
+  /* trail fade: translucent wash of the background */
+  ctx.globalAlpha=C.fade;ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  ctx.globalAlpha=1;ctx.lineWidth=Math.max(1,DPR*.65);
+  var sp=.85*DPR;
+  for(var i=0;i<parts.length;i++){
+    var p=parts[i],a=angle(p.x,p.y,t)*1.6;
+    /* gentle swirl around the pointer */
+    var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy,r=180*DPR;
+    if(d2<r*r){var d=Math.sqrt(d2)||1,k=(1-d/r)*1.5;a+=k*Math.atan2(dy,dx)}
+    var nx2=p.x+Math.cos(a)*sp,ny2=p.y+Math.sin(a)*sp;
+    ctx.strokeStyle=(i%9===0)?C.accent2:C.accent;
+    ctx.globalAlpha=(i%9===0)?C.a2:C.a1;
+    ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(nx2,ny2);ctx.stroke();
+    p.x=nx2;p.y=ny2;p.life--;
+    if(p.life<0||p.x<-4||p.x>W+4||p.y<-4||p.y>H+4)spawn(p);
+  }
+  ctx.globalAlpha=1;
+  raf=requestAnimationFrame(step);
+}
+function prerender(){
+  /* reduced motion: one static texture, no loop */
+  for(var k=0;k<160;k++){
+    t+=.016;
+    ctx.lineWidth=Math.max(1,DPR*.65);
+    for(var i=0;i<parts.length;i++){
+      var p=parts[i],a=angle(p.x,p.y,t)*1.6;
+      var nx2=p.x+Math.cos(a)*.85*DPR,ny2=p.y+Math.sin(a)*.85*DPR;
+      ctx.strokeStyle=(i%9===0)?C.accent2:C.accent;ctx.globalAlpha=.05;
+      ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(nx2,ny2);ctx.stroke();
+      p.x=nx2;p.y=ny2;
+      if(p.x<-4||p.x>W+4||p.y<-4||p.y>H+4)spawn(p);
+    }
+  }
+  ctx.globalAlpha=1;
+}
+resize();
+addEventListener("resize",resize);
+cv.parentNode.addEventListener("pointermove",function(e){
+  var r=cv.getBoundingClientRect();
+  mouse.x=(e.clientX-r.left)*DPR;mouse.y=(e.clientY-r.top)*DPR;
+});
+cv.parentNode.addEventListener("pointerleave",function(){mouse.x=-1e5;mouse.y=-1e5});
+if(!reduced){
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){if(!raf)raf=requestAnimationFrame(step)}
+      else if(raf){cancelAnimationFrame(raf);raf=null}
+    });
+  },{threshold:.02}).observe(cv.parentNode);
+}
+
 btn.addEventListener("click",function(){
   var dark=root.hasAttribute("data-theme");
   if(dark){root.removeAttribute("data-theme")}else{root.setAttribute("data-theme","dark")}
   try{localStorage.setItem("ta-theme",dark?"light":"dark")}catch(e){}
-  label();
+  label();readColors();
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(reduced)prerender();
 });
+
+/* ---------- reveals ---------- */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}});
+},{threshold:.08,rootMargin:"0px 0px -40px 0px"});
+Array.prototype.forEach.call(document.querySelectorAll(".rv,.stagger"),function(el){io.observe(el)});
 })();
 </script>
 </body>

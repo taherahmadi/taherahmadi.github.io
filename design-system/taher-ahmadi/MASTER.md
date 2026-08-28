@@ -277,3 +277,13 @@ Owner asked for a more minimal design with no projects on the first page.
 - **Projects:** moved to `projects.html` (thumbnail + text rows, same language), linked from the bio and footer; old Pelican archive still at pages/research-projects.html.
 - **Type:** Inter only; system mono for labels/dates. **Color:** near-monochrome, warm off-white `#FCFCFA` / ink `#1C1C1A`, underlined links, no accent color. Dark: `#151514` / `#E9E9E4`.
 - Theme toggle is a small text link in the footer; preference shared across pages via localStorage.
+
+## v6 Direction: Minimal + Kinetic (current)
+
+Owner feedback on v5: too static; wants clean and smooth with mesmerizing yet lightweight animation, minimal information, broader intro (not only determinism).
+
+- **Hero:** full-viewport canvas flow field: particle trajectories drifting through a layered-sine vector field (a nod to motion-prediction research). No libraries, ~520 particles, theme-aware opacity (airy pencil traces in light, glowing threads in dark), gentle pointer swirl, pauses when offscreen, static texture under reduced motion.
+- **Tagline:** "Teaching machines to see, predict, and act." with the three verbs pulsing in accent on a slow 9s cycle.
+- **Type:** Space Grotesk display + Inter text. **Color:** near-monochrome plus one periwinkle/cobalt accent (#3450C8 light, #8FA3FF dark).
+- **Motion language:** eased staggered reveals (550-600ms), animated link underlines, floating scroll cue; full reduced-motion fallback.
+- **Content:** as v5 minus awards (in CV); intro rewritten to span vision, motion prediction, robotics, and agentic AI. Projects remain on projects.html.
