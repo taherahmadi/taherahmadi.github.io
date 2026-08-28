@@ -316,3 +316,11 @@ Replaced the generic flow field with a scene about the work itself:
 - Weight-to-color is the full spectrum hsl(120 -> 0): green (weak) through yellow and orange to red (strong); lightness 58% dark / 42% light. Alpha and stroke width still scale with weight.
 - Seeded (prefill) tokens carry a backdated timestamp so the ribbon loads as settled gray context; only genuinely new tokens flash accent (fixes the blue-then-gray refresh artifact).
 - Hero sub-line reads "7+ years" instead of "Seven years".
+
+## v6.5 Performance (current)
+
+Load lag fixed and steady-state cost cut ~2.5x:
+- Seeding no longer casts arcs (the load burst was ~700 live arcs for the first 2.4s; roving queries repopulate within a second); live arcs hard-capped at 34/lane.
+- Dashed curve strokes replaced by dot-sampled quadratic arcs (7-20 dots each, one fill per arc); dash rasterization was the dominant frame cost.
+- Text blitted from per-lane sprite caches instead of fillText (~280 tokens/frame); caches invalidated on theme change.
+- Redundant full-canvas clearRect removed; canvas DPR capped at 1.5.
