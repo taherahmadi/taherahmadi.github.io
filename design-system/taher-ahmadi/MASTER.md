@@ -268,3 +268,12 @@ The IDE-dark direction was replaced at the owner's request for a structurally di
 - **Palette:** warm paper light default `#F6F4EE` / ink `#211D16` / oxblood accent `#8A3324`; warm dark mode `#191510` / terracotta accent `#D98E6B`
 - **Component language:** reference-list publications ([1][2][3], venue in italics, featured entry tinted with left rule), figure plates with Fig. numbers for projects, definition-list skills, ledger-style awards
 - **Craft rules carried over:** no gradients, no glow, named transitions at 150-350ms ease-out, 4px spacing rhythm, tabular-nums, designed hover/focus/active states, reduced-motion support, no em dashes
+
+## v5 Direction: Minimal Single Column (current)
+
+Owner asked for a more minimal design with no projects on the first page.
+
+- **Homepage:** one 620px column: name, three-paragraph bio, compact ruled entries for experience, publications (reference lines with citation counts), awards ledger, education, footer links. No hero, no stats row, no images except none.
+- **Projects:** moved to `projects.html` (thumbnail + text rows, same language), linked from the bio and footer; old Pelican archive still at pages/research-projects.html.
+- **Type:** Inter only; system mono for labels/dates. **Color:** near-monochrome, warm off-white `#FCFCFA` / ink `#1C1C1A`, underlined links, no accent color. Dark: `#151514` / `#E9E9E4`.
+- Theme toggle is a small text link in the footer; preference shared across pages via localStorage.
