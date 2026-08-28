@@ -287,3 +287,12 @@ Owner feedback on v5: too static; wants clean and smooth with mesmerizing yet li
 - **Type:** Space Grotesk display + Inter text. **Color:** near-monochrome plus one periwinkle/cobalt accent (#3450C8 light, #8FA3FF dark).
 - **Motion language:** eased staggered reveals (550-600ms), animated link underlines, floating scroll cue; full reduced-motion fallback.
 - **Content:** as v5 minus awards (in CV); intro rewritten to span vision, motion prediction, robotics, and agentic AI. Projects remain on projects.html.
+
+## v6.1 Hero Animation: Attention Stream (current)
+
+Replaced the generic flow field with a scene about the work itself:
+
+- Three token streams of ML-theory symbols (theta, grad-l, sigma(x), QK^T, sqrt-d, softmax, argmax, KL, logits, x_t, h_t, ...) slide left like a context window; new tokens are emitted autoregressively at the right edge and appear in accent color.
+- Causal attention arcs: each new token, and a roving query among visible tokens, casts quadratic arcs back to context tokens; arc opacity plays the role of a recency-biased softmax weight, fading over ~2.4s.
+- Middle lane dimmed to keep the tagline legible; lanes drift a few px toward the pointer.
+- Theme-aware alphas via MutationObserver recolor; static frame under reduced motion; pauses offscreen; no libraries.

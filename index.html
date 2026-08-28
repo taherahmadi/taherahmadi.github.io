@@ -296,75 +296,139 @@ else if(!saved&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dar
 function label(){btn.textContent=root.hasAttribute("data-theme")?"light":"dark"}
 label();
 
-/* ---------- flow field: trajectories through a vector field ----------
-   A nod to human motion prediction. Cheap layered-sine field, particle
-   trails with alpha fade. Pauses offscreen. Static under reduced motion. */
+/* ---------- attention stream ----------------------------------------
+   Autoregressive generation, drawn live. Each lane is a token stream of
+   ML-theory symbols; every new token casts causal attention arcs back to
+   its context, arc opacity playing the role of softmax weight. The
+   context window slides on. No libraries. --------------------------- */
 var cv=document.getElementById("field"),ctx=cv.getContext("2d");
-var W,H,DPR,parts=[],t=0,raf=null,C={};
+var W,H,DPR,C={},lanes=[],raf=null,last=0;
 var mouse={x:-1e5,y:-1e5};
+
+var VOCAB=["\u03b8","\u2207\u2113","\u03c3(x)","\u03a3","\u2202\u2113/\u2202\u03b8","\u03bb","\u03b5","\u03b7","\u03b1","\u03b2","\u03bc","W","Q","K","V","QK\u1d40","\u221ad","softmax","argmax","p(x)","KL","\u0177","attn","x\u209c","h\u209c","logits","\u2113(\u03b8)","E[x]","\u2207f"];
 
 function readColors(){
   var cs=getComputedStyle(root);
   C.bg=cs.getPropertyValue("--bg").trim();
+  C.ink=cs.getPropertyValue("--ink").trim();
+  C.faint=cs.getPropertyValue("--faint").trim();
   C.accent=cs.getPropertyValue("--accent").trim();
-  C.accent2=cs.getPropertyValue("--accent-2").trim();
   var dark=root.hasAttribute("data-theme");
-  C.a1=dark?.32:.30;C.a2=dark?.48:.42;C.fade=dark?.055:.045;
+  C.tok=dark?.6:.55;        /* context token alpha */
+  C.tokNew=dark?.95:.9;     /* freshly generated token */
+  C.arc=dark?.62:.55;       /* attention arc base alpha */
+  C.base=dark?.14:.12;      /* lane baseline */
+}
+function makeLane(fy,size,speed,dim,phase){
+  return {fy:fy,size:size,speed:speed,dim:dim,tokens:[],arcs:[],cool:phase,shift:0,shiftT:0};
 }
 function resize(){
   DPR=Math.min(devicePixelRatio||1,2);
   var r=cv.parentNode.getBoundingClientRect();
   W=cv.width=Math.floor(r.width*DPR);H=cv.height=Math.floor(r.height*DPR);
   cv.style.width=r.width+"px";cv.style.height=r.height+"px";
-  var n=Math.min(520,Math.floor(r.width*r.height/3600));
-  parts=[];
-  for(var i=0;i<n;i++)parts.push(spawn({}));
   readColors();
-  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
-  if(reduced){prerender()}
+  lanes=[
+    makeLane(.14,17,26,1,0),
+    makeLane(.46,13,18,.4,.6),   /* dim mid lane keeps the tagline legible */
+    makeLane(.80,20,32,.9,1.2)
+  ];
+  /* pre-fill each lane so the scene starts populated */
+  lanes.forEach(function(L){
+    var x=W*.05;
+    while(x<W+40*DPR){x=emit(L,x)}
+  });
+  if(reduced){drawFrame(0);}
 }
-function spawn(p){p.x=Math.random()*W;p.y=Math.random()*H;p.life=120+Math.random()*260;return p}
-function angle(x,y,tt){
-  var nx=x/W*4.4,ny=y/H*4.4;
-  return Math.sin(nx*1.6+tt*.32)+Math.cos(ny*1.9-tt*.24)
-       + .8*Math.sin((nx+ny)*1.1+tt*.15);
+function emit(L,atX){
+  var g=VOCAB[Math.floor(Math.random()*VOCAB.length)];
+  ctx.font=(L.size*DPR)+"px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+  var w=ctx.measureText(g).width;
+  var tk={g:g,x:atX,w:w,born:performance.now()};
+  L.tokens.push(tk);
+  castArcs(L,L.tokens.length-1);
+  return atX+w+(14+Math.random()*26)*DPR;
 }
-function step(){
-  t+=.016;
-  /* trail fade: translucent wash of the background */
-  ctx.globalAlpha=C.fade;ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
-  ctx.globalAlpha=1;ctx.lineWidth=Math.max(1,DPR*.65);
-  var sp=.85*DPR;
-  for(var i=0;i<parts.length;i++){
-    var p=parts[i],a=angle(p.x,p.y,t)*1.6;
-    /* gentle swirl around the pointer */
-    var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy,r=180*DPR;
-    if(d2<r*r){var d=Math.sqrt(d2)||1,k=(1-d/r)*1.5;a+=k*Math.atan2(dy,dx)}
-    var nx2=p.x+Math.cos(a)*sp,ny2=p.y+Math.sin(a)*sp;
-    ctx.strokeStyle=(i%9===0)?C.accent2:C.accent;
-    ctx.globalAlpha=(i%9===0)?C.a2:C.a1;
-    ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(nx2,ny2);ctx.stroke();
-    p.x=nx2;p.y=ny2;p.life--;
-    if(p.life<0||p.x<-4||p.x>W+4||p.y<-4||p.y>H+4)spawn(p);
+function castArcs(L,qi){
+  /* the token at qi acts as the query: causal arcs back into its context,
+     opacity as softmax-like recency-biased weight */
+  var q=L.tokens[qi],now=performance.now();
+  var picked=0,want=2+Math.floor(Math.random()*3);
+  for(var i=qi-1;i>=0&&i>=qi-14&&picked<want;i--){
+    var gap=qi-i;
+    var wgt=Math.exp(-gap/5)*(.35+Math.random());
+    if(wgt>.25){L.arcs.push({a:q,b:L.tokens[i],w:Math.min(1,wgt),born:now});picked++}
   }
-  ctx.globalAlpha=1;
-  raf=requestAnimationFrame(step);
 }
-function prerender(){
-  /* reduced motion: one static texture, no loop */
-  for(var k=0;k<160;k++){
-    t+=.016;
-    ctx.lineWidth=Math.max(1,DPR*.65);
-    for(var i=0;i<parts.length;i++){
-      var p=parts[i],a=angle(p.x,p.y,t)*1.6;
-      var nx2=p.x+Math.cos(a)*.85*DPR,ny2=p.y+Math.sin(a)*.85*DPR;
-      ctx.strokeStyle=(i%9===0)?C.accent2:C.accent;ctx.globalAlpha=.05;
-      ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(nx2,ny2);ctx.stroke();
-      p.x=nx2;p.y=ny2;
-      if(p.x<-4||p.x>W+4||p.y<-4||p.y>H+4)spawn(p);
+function drawFrame(dt){
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  var now=performance.now();
+  for(var li=0;li<lanes.length;li++){
+    var L=lanes[li],y=H*L.fy;
+    /* pointer parallax: lanes drift a few px toward the cursor */
+    var targetShift=0;
+    if(mouse.x>-1e4){targetShift=((mouse.y/H)-L.fy)*14*DPR}
+    L.shift+=(targetShift-L.shift)*.04;
+    y+=L.shift;
+    /* baseline */
+    ctx.globalAlpha=C.base*L.dim;ctx.strokeStyle=C.faint;ctx.lineWidth=DPR;
+    ctx.beginPath();ctx.moveTo(0,y+6*DPR);ctx.lineTo(W,y+6*DPR);ctx.stroke();
+    /* slide the context window */
+    var dx=L.speed*DPR*dt;
+    for(var i=0;i<L.tokens.length;i++)L.tokens[i].x-=dx;
+    while(L.tokens.length&&L.tokens[0].x+L.tokens[0].w<-30*DPR)L.tokens.shift();
+    /* autoregressive emission */
+    L.cool-=dt;
+    if(L.cool<=0){
+      var lastTk=L.tokens[L.tokens.length-1];
+      var nx=Math.max(W+10*DPR,lastTk?lastTk.x+lastTk.w+18*DPR:W+10*DPR);
+      emit(L,nx);
+      L.cool=.55+Math.random()*.75;
+    }
+    /* roving query: a visible token re-attends over its context */
+    L.qcool=(L.qcool||0)-dt;
+    if(L.qcool<=0&&L.tokens.length>4){
+      var vis=[];
+      for(var v=1;v<L.tokens.length;v++){
+        if(L.tokens[v].x>60*DPR&&L.tokens[v].x<W-40*DPR)vis.push(v);
+      }
+      if(vis.length){castArcs(L,vis[Math.floor(Math.random()*vis.length)])}
+      L.qcool=.5+Math.random()*.7;
+    }
+    /* attention arcs (above the lane), fading like a shifting context */
+    ctx.lineWidth=1.3*DPR;
+    for(var a=L.arcs.length-1;a>=0;a--){
+      var A=L.arcs[a],age=(now-A.born)/2400;
+      if(age>1||A.b.x+A.b.w<-30*DPR){L.arcs.splice(a,1);continue}
+      var x1=A.a.x+A.a.w/2,x2=A.b.x+A.b.w/2;
+      if(x1>W+60*DPR)continue;
+      var span=Math.abs(x1-x2);
+      var h=Math.min(H*.11,span*.36)+8*DPR;
+      ctx.globalAlpha=C.arc*L.dim*(.35+.65*A.w)*(1-age);
+      ctx.strokeStyle=C.accent;
+      ctx.beginPath();ctx.moveTo(x1,y-4*DPR);
+      ctx.quadraticCurveTo((x1+x2)/2,y-h,x2,y-4*DPR);
+      ctx.stroke();
+    }
+    /* tokens */
+    ctx.font=(L.size*DPR)+"px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    ctx.textBaseline="alphabetic";
+    for(var k=0;k<L.tokens.length;k++){
+      var T=L.tokens[k],fresh=(now-T.born)<900;
+      if(T.x>W+60*DPR)continue;
+      var edge=Math.min(1,Math.max(0,(T.x+T.w)/(80*DPR)));           /* fade out left */
+      ctx.fillStyle=fresh?C.accent:C.ink;
+      ctx.globalAlpha=(fresh?C.tokNew:C.tok*.8)*L.dim*edge;
+      ctx.fillText(T.g,T.x,y);
     }
   }
   ctx.globalAlpha=1;
+}
+function step(ts){
+  var dt=Math.min(.05,(ts-last)/1000||.016);last=ts;
+  drawFrame(dt);
+  raf=requestAnimationFrame(step);
 }
 resize();
 addEventListener("resize",resize);
@@ -376,27 +440,22 @@ cv.parentNode.addEventListener("pointerleave",function(){mouse.x=-1e5;mouse.y=-1
 if(!reduced){
   new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(e.isIntersecting){if(!raf)raf=requestAnimationFrame(step)}
+      if(e.isIntersecting){if(!raf){last=performance.now();raf=requestAnimationFrame(step)}}
       else if(raf){cancelAnimationFrame(raf);raf=null}
     });
   },{threshold:.02}).observe(cv.parentNode);
 }
 
-function repaint(){
-  readColors();
-  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
-  if(reduced)prerender();
-}
+/* theme changes: recolor and redraw, whoever flips the attribute */
+function repaint(){readColors();drawFrame(0)}
 btn.addEventListener("click",function(){
   var dark=root.hasAttribute("data-theme");
   if(dark){root.removeAttribute("data-theme")}else{root.setAttribute("data-theme","dark")}
   try{localStorage.setItem("ta-theme",dark?"light":"dark")}catch(e){}
   label();
 });
-/* single source of truth: recolor on any theme attribute change */
 new MutationObserver(function(){label();repaint()})
   .observe(root,{attributes:true,attributeFilter:["data-theme"]});
-/* follow OS preference live when the visitor has not chosen */
 if(window.matchMedia){
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(e){
     var stored=null;try{stored=localStorage.getItem("ta-theme")}catch(err){}
