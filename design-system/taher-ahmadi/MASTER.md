@@ -330,3 +330,11 @@ Load lag fixed and steady-state cost cut ~2.5x:
 - Cursor as query: the word nearest the pointer becomes the attention query (highlighted in accent), casting boosted arcs (x1.3 weight, +1 arc, 0.3s cadence) to its context.
 - Time dilation: each lane's drift and emission slow up to 88% by vertical proximity to the pointer (smoothly lerped), so the passage becomes readable where the reader looks.
 - Both are pointer-only enhancements; touch and reduced-motion behavior unchanged.
+
+## v6.7 Tokenized Passage + Global Attention (current)
+
+- The passage is tokenized into fake-BPE subword pieces displayed as alternating tokenizer blocks; each beat is pre-baked as one sprite with per-piece coordinates as metadata.
+- The passage is partitioned across the 7 lanes (each lane owns a contiguous chapter), so the page always shows the whole passage; rightward lanes emit in reverse order so text reads left-to-right everywhere.
+- Attention is global: a query piece casts local context arcs plus cross-lane leaps to every visible piece in the same semantic family (curved perpendicular bows between lanes).
+- Cursor = query at piece level (single subword highlighted); stronger time dilation (97% slow, faster lerp).
+- Perf: the hero backdrop-filter blur was re-blurring the animated canvas every frame (~100ms/frame); replaced with a masked tint plus an in-canvas oval fog that fades tokens and arcs toward the text. 18.6ms/frame in software rendering, 60fps on GPU.
