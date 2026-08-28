@@ -106,6 +106,9 @@ a:hover{color:var(--accent);background-size:0% 1px}
 }
 .hero-links{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;justify-content:center}
 .hero-links a{font-size:15px}
+.hero-links a,.links a{display:inline-flex;align-items:center;gap:7px}
+.hero-links svg,.links svg{width:15px;height:15px;fill:currentColor;flex-shrink:0;opacity:.75}
+.hero-links a:hover svg,.links a:hover svg{opacity:1}
 .hero-links .cvl{
   font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;
   border:1px solid var(--rule);border-radius:999px;padding:11px 20px;background:none;
@@ -191,12 +194,12 @@ footer{margin-top:96px;padding-top:28px;border-top:1px solid var(--rule)}
       running in production.
     </p>
     <div class="hero-links">
-      <a class="cvl" href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener">Download CV</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://github.com/taherahmadi" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/taher-ahmadi" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
-      <a href="mailto:14taher@gmail.com">Email</a>
+      <a class="cvl" href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 0h5.5L14 4.5V15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm5 1v4h4L9 1zM5.5 8h5v1h-5V8zm0 2.5h5v1h-5v-1zm0 2.5h3v1h-3v-1z"/></svg>Download CV</a>
+      <a href="projects.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1h6v6H1V1zm8 0h6v6H9V1zM1 9h6v6H1V9zm8 0h6v6H9V9z"/></svg>Projects</a>
+      <a href="https://github.com/taherahmadi" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <a href="https://www.linkedin.com/in/taher-ahmadi" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.53 0 1.18 0h13.64C15.47 0 16 .52 16 1.15v13.7c0 .63-.53 1.15-1.18 1.15H1.18C.53 16 0 15.48 0 14.85V1.15zm4.94 12.25V6.17H2.54v7.23h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.24-.02-.71-.52-1.25-1.34-1.25S2.4 3.23 2.4 3.94c0 .69.52 1.24 1.32 1.24h.02zm4.98 8.22V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.63v3.88h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.17 1.19v.02h-.01l.01-.02V6.17h-2.4c.03.68 0 7.23 0 7.23h2.4z"/></svg>LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0 0 6.13l3.05 2.28v4.06L8 16l4.95-3.53V8.41L14.4 7.3v4.57h1.2V6.13L8 0zm3.75 11.85L8 14.53l-3.75-2.68V9.31L8 12.11l3.75-2.8v2.54zM8 10.6 2.03 6.13 8 1.55l5.97 4.58L8 10.6z"/></svg>Scholar</a>
+      <a href="mailto:14taher@gmail.com"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M.05 3.56A1.5 1.5 0 0 1 1.5 2.5h13a1.5 1.5 0 0 1 1.45 1.06L8 8.58.05 3.56zM0 4.7v7.3a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 12V4.7L8 9.75.0 4.7z"/></svg>Email</a>
     </div>
   </div>
   <a class="scroll-cue" href="#about" aria-label="Scroll to content">Scroll</a>
@@ -283,12 +286,12 @@ footer{margin-top:96px;padding-top:28px;border-top:1px solid var(--rule)}
 
 <footer class="rv">
   <ul class="links">
-    <li><a href="mailto:14taher@gmail.com">14taher@gmail.com</a></li>
-    <li><a href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="https://github.com/taherahmadi" target="_blank" rel="noopener">GitHub</a></li>
-    <li><a href="https://www.linkedin.com/in/taher-ahmadi" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a></li>
+    <li><a href="mailto:14taher@gmail.com"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M.05 3.56A1.5 1.5 0 0 1 1.5 2.5h13a1.5 1.5 0 0 1 1.45 1.06L8 8.58.05 3.56zM0 4.7v7.3a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 12V4.7L8 9.75.0 4.7z"/></svg>14taher@gmail.com</a></li>
+    <li><a href="docs/CV/Taherahmadi_CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 0h5.5L14 4.5V15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zm5 1v4h4L9 1zM5.5 8h5v1h-5V8zm0 2.5h5v1h-5v-1zm0 2.5h3v1h-3v-1z"/></svg>CV (PDF)</a></li>
+    <li><a href="projects.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1h6v6H1V1zm8 0h6v6H9V1zM1 9h6v6H1V9zm8 0h6v6H9V9z"/></svg>Projects</a></li>
+    <li><a href="https://github.com/taherahmadi" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/taher-ahmadi" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.53 0 1.18 0h13.64C15.47 0 16 .52 16 1.15v13.7c0 .63-.53 1.15-1.18 1.15H1.18C.53 16 0 15.48 0 14.85V1.15zm4.94 12.25V6.17H2.54v7.23h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.24-.02-.71-.52-1.25-1.34-1.25S2.4 3.23 2.4 3.94c0 .69.52 1.24 1.32 1.24h.02zm4.98 8.22V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.63v3.88h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.17 1.19v.02h-.01l.01-.02V6.17h-2.4c.03.68 0 7.23 0 7.23h2.4z"/></svg>LinkedIn</a></li>
+    <li><a href="https://scholar.google.com/citations?user=ReRMyfsAAAAJ&amp;hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0 0 6.13l3.05 2.28v4.06L8 16l4.95-3.53V8.41L14.4 7.3v4.57h1.2V6.13L8 0zm3.75 11.85L8 14.53l-3.75-2.68V9.31L8 12.11l3.75-2.8v2.54zM8 10.6 2.03 6.13 8 1.55l5.97 4.58L8 10.6z"/></svg>Scholar</a></li>
   </ul>
   <div class="fine">© 2026 Taher Ahmadi</div>
 </footer>
