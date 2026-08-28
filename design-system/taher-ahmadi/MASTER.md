@@ -296,3 +296,9 @@ Replaced the generic flow field with a scene about the work itself:
 - Causal attention arcs: each new token, and a roving query among visible tokens, casts quadratic arcs back to context tokens; arc opacity plays the role of a recency-biased softmax weight, fading over ~2.4s.
 - Middle lane dimmed to keep the tagline legible; lanes drift a few px toward the pointer.
 - Theme-aware alphas via MutationObserver recolor; static frame under reduced motion; pauses offscreen; no libraries.
+
+## v6.2 Hero: Story Ribbon + New Tagline (current)
+
+- Animation now runs 5 lanes (two dimmed behind the headline) walking one cohesive story in plain words: the life of a learning machine, from data and attention through the agent loop (goal, observe, retrieve, reason, tool call, verify, reflect, memory, reward, gradient) to shipping, drift, and earning trust; ~34 beats, one cycle roughly 30s per lane, staggered offsets. Attention arcs hop between story beats.
+- Tagline: "Building systems that reason, act, and earn trust." with the three key phrases pulsing in accent; display sized clamp(32px,6vw,58px) for a two-line break.
+- The story's closing beats intentionally echo the tagline ("it earns trust slowly, the way good systems do").
