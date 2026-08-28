@@ -75,13 +75,16 @@ a:hover{color:var(--accent);background-size:0% 1px}
   padding:0 28px;
 }
 .hero h1{
-  font-family:var(--disp);font-size:15px;font-weight:500;letter-spacing:.02em;
-  margin:0 0 26px;color:var(--ink-2);
+  font-family:var(--disp);font-size:clamp(46px,8vw,92px);font-weight:600;
+  letter-spacing:-.035em;line-height:1;margin:0 0 12px;color:var(--ink);
 }
-.hero h1 span{color:var(--faint);font-family:var(--mono);font-size:12px;letter-spacing:.06em;margin-left:14px}
+.hero .meta{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 34px;
+}
 .tagline{
   font-family:var(--disp);font-weight:600;letter-spacing:-.03em;
-  font-size:clamp(32px,6vw,58px);line-height:1.1;margin:0 0 30px;
+  font-size:clamp(22px,3.4vw,38px);line-height:1.2;margin:0 0 26px;color:var(--ink-2);
 }
 .tagline .verb{position:relative;display:inline-block;animation:vpulse 9s ease-in-out infinite}
 .tagline .verb:nth-child(2){animation-delay:3s}
@@ -169,7 +172,8 @@ footer{margin-top:96px;padding-top:28px;border-top:1px solid var(--rule)}
 <header class="hero">
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="hero-in">
-    <h1>Taher Ahmadi <span>Machine Learning Research Engineer · Vancouver, BC</span></h1>
+    <h1>Taher Ahmadi</h1>
+    <p class="meta">Machine Learning Research Engineer · Vancouver, BC</p>
     <p class="tagline">Building systems that<br>
       <span class="verb">reason</span>, <span class="verb">act</span>, and <span class="verb">earn&nbsp;trust</span>.
     </p>
@@ -296,19 +300,16 @@ else if(!saved&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dar
 function label(){btn.textContent=root.hasAttribute("data-theme")?"light":"dark"}
 label();
 
-/* ---------- attention stream ----------------------------------------
-   Autoregressive generation, drawn live. Each lane is a token stream of
-   ML-theory symbols; every new token casts causal attention arcs back to
-   its context, arc opacity playing the role of softmax weight. The
-   context window slides on. No libraries. --------------------------- */
+/* ---------- attention story ribbon -----------------------------------
+   Seven lanes drift in random directions, each walking one cohesive
+   story. Attention connects words the way a model would: related words
+   bind strongly, others decay with distance; arcs reach both backward
+   (drawn above the line) and forward (below). Color and thickness map
+   attention weight on a heat scale: faint -> accent -> hot. ---------- */
 var cv=document.getElementById("field"),ctx=cv.getContext("2d");
 var W,H,DPR,C={},lanes=[],raf=null,last=0;
 var mouse={x:-1e5,y:-1e5};
 
-/* one cohesive passage: the life of a learning machine, told as a
-   story. Pretraining, representation, attention, the agent loop,
-   gradients, evaluation, deployment, trust. Each lane walks the story
-   endlessly; attention arcs hop between its beats. */
 var PASSAGE=[
   "it begins with data.","billions of small examples,","each one a lesson.",
   "the model reads them all,","turning words into vectors,","and vectors into meaning.",
@@ -326,7 +327,39 @@ var PASSAGE=[
   "and when the next token comes,","it is better than the last.",
   "then a new goal arrives \u27f2"
 ];
-
+/* semantic families: what a trained model would actually bind together */
+var GROUPS=[
+  ["data","examples","lesson","reads"],
+  ["model","layer","shape","ships"],
+  ["vectors","words","meaning","token"],
+  ["attention","attends","matters"],
+  ["goal","arrives","wakes","agent"],
+  ["sees","scene","predicts","act","chooses"],
+  ["memory","recalls","writes","learned","reflects"],
+  ["reasons","options","verifies","adapts"],
+  ["tool","calls","world","answer"],
+  ["error","gradient","loss","skill","policy","sharper"],
+  ["benchmarks","noise","drift","edge","measured"],
+  ["trust","earns","good systems","better"]
+];
+function gidOf(g){
+  var lg=g.toLowerCase();
+  for(var i=0;i<GROUPS.length;i++)
+    for(var j=0;j<GROUPS[i].length;j++)
+      if(lg.indexOf(GROUPS[i][j])>=0)return i;
+  return -1;
+}
+function hexRGB(h){
+  h=h.replace("#","");
+  if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+  return [parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];
+}
+function mixc(a,b,t){
+  return "rgb("+Math.round(a[0]+(b[0]-a[0])*t)+","+Math.round(a[1]+(b[1]-a[1])*t)+","+Math.round(a[2]+(b[2]-a[2])*t)+")";
+}
+function heat(w){ /* attention weight -> color: faint -> accent -> hot */
+  return w<.5?mixc(C.rgbFaint,C.rgbAccent,w*2):mixc(C.rgbAccent,C.rgbHot,(w-.5)*2);
+}
 function readColors(){
   var cs=getComputedStyle(root);
   C.bg=cs.getPropertyValue("--bg").trim();
@@ -334,13 +367,59 @@ function readColors(){
   C.faint=cs.getPropertyValue("--faint").trim();
   C.accent=cs.getPropertyValue("--accent").trim();
   var dark=root.hasAttribute("data-theme");
-  C.tok=dark?.6:.55;        /* context token alpha */
-  C.tokNew=dark?.95:.9;     /* freshly generated token */
-  C.arc=dark?.62:.55;       /* attention arc base alpha */
-  C.base=dark?.14:.12;      /* lane baseline */
+  C.hot=dark?"#FFA94D":"#D9480F";
+  C.rgbFaint=hexRGB(C.faint);C.rgbAccent=hexRGB(C.accent);C.rgbHot=hexRGB(C.hot);
+  C.tok=dark?.6:.55;
+  C.tokNew=dark?.95:.9;
+  C.arc=dark?.7:.6;
+  C.base=dark?.12:.1;
 }
-function makeLane(fy,size,speed,dim,phase){
-  return {fy:fy,size:size,speed:speed,dim:dim,tokens:[],arcs:[],cool:phase,shift:0,shiftT:0};
+function makeLane(fy,size,dim,phase){
+  return {
+    fy:fy,size:size,dim:dim,
+    dir:Math.random()<.5?-1:1,
+    speed:13+Math.random()*17,
+    tokens:[],arcs:[],cool:phase,qcool:Math.random(),shift:0,pi:0
+  };
+}
+function fontFor(L){return (L.size*DPR)+"px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"}
+function emit(L,seed){
+  var g=PASSAGE[L.pi];L.pi=(L.pi+1)%PASSAGE.length;
+  ctx.font=fontFor(L);
+  var w=ctx.measureText(g).width,gap=(16+Math.random()*26)*DPR;
+  var lastTk=L.tokens[L.tokens.length-1],x;
+  if(seed){ /* lay the story across the screen, no edge clamp */
+    if(L.dir<0){x=lastTk?lastTk.x+lastTk.w+gap:-10*DPR}
+    else{x=lastTk?lastTk.x-gap-w:W+10*DPR-w}
+  }
+  else if(L.dir<0){x=lastTk?Math.max(W+10*DPR,lastTk.x+lastTk.w+gap):W*.02}
+  else{x=lastTk?Math.min(-10*DPR-w,lastTk.x-gap-w):W*.98-w}
+  var tk={g:g,x:x,w:w,gid:gidOf(g),born:performance.now()};
+  L.tokens.push(tk);
+  castArcs(L,L.tokens.length-1);
+  return tk;
+}
+function castArcs(L,qi){
+  /* the query token attends over nearby context, both directions.
+     Related words (same semantic family) bind strongly; the rest
+     decays with distance, softmax-style. */
+  var q=L.tokens[qi],now=performance.now();
+  var cands=[];
+  for(var i=Math.max(0,qi-10);i<Math.min(L.tokens.length,qi+11);i++){
+    if(i===qi)continue;
+    var gap=Math.abs(qi-i);
+    var w=Math.exp(-gap/6)*(.18+.3*Math.random());
+    if(q.gid>=0&&L.tokens[i].gid===q.gid)w+=.55+.2*Math.random();
+    cands.push({i:i,w:Math.min(1,w)});
+  }
+  cands.sort(function(a,b){return b.w-a.w});
+  var want=2+Math.floor(Math.random()*3),picked=0;
+  for(var k=0;k<cands.length&&picked<want;k++){
+    if(cands[k].w>.2){
+      L.arcs.push({a:q,b:L.tokens[cands[k].i],w:cands[k].w,fwd:cands[k].i>qi,born:now});
+      picked++;
+    }
+  }
 }
 function resize(){
   DPR=Math.min(devicePixelRatio||1,2);
@@ -348,40 +427,24 @@ function resize(){
   W=cv.width=Math.floor(r.width*DPR);H=cv.height=Math.floor(r.height*DPR);
   cv.style.width=r.width+"px";cv.style.height=r.height+"px";
   readColors();
-  lanes=[
-    makeLane(.09,16,26,.95,0),
-    makeLane(.28,13,20,.5,.4),   /* dimmed: sits near the headline */
-    makeLane(.47,12,16,.35,.8),  /* dimmed: behind the tagline */
-    makeLane(.66,14,22,.6,1.2),
-    makeLane(.87,18,30,.9,1.6)
-  ];
-  lanes.forEach(function(L,i){L.pi=Math.floor(i*PASSAGE.length/lanes.length)});
-  /* pre-fill each lane so the scene starts populated */
-  lanes.forEach(function(L){
-    var x=W*.05;
-    while(x<W+40*DPR){x=emit(L,x)}
-  });
-  if(reduced){drawFrame(0);}
-}
-function emit(L,atX){
-  var g=PASSAGE[L.pi];L.pi=(L.pi+1)%PASSAGE.length;
-  ctx.font=(L.size*DPR)+"px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
-  var w=ctx.measureText(g).width;
-  var tk={g:g,x:atX,w:w,born:performance.now()};
-  L.tokens.push(tk);
-  castArcs(L,L.tokens.length-1);
-  return atX+w+(14+Math.random()*26)*DPR;
-}
-function castArcs(L,qi){
-  /* the token at qi acts as the query: causal arcs back into its context,
-     opacity as softmax-like recency-biased weight */
-  var q=L.tokens[qi],now=performance.now();
-  var picked=0,want=2+Math.floor(Math.random()*3);
-  for(var i=qi-1;i>=0&&i>=qi-14&&picked<want;i--){
-    var gap=qi-i;
-    var wgt=Math.exp(-gap/5)*(.35+Math.random());
-    if(wgt>.25){L.arcs.push({a:q,b:L.tokens[i],w:Math.min(1,wgt),born:now});picked++}
+  var fys=[.06,.20,.34,.48,.62,.76,.90];
+  var dims=[.9,.55,.35,.35,.6,.85,.95];
+  lanes=[];
+  for(var i=0;i<7;i++){
+    var L=makeLane(fys[i],11+Math.random()*8,dims[i],Math.random()*1.4);
+    L.pi=Math.floor(i*PASSAGE.length/7);
+    lanes.push(L);
   }
+  /* pre-fill each lane across the full width, in story order */
+  lanes.forEach(function(L){
+    var guard=0;
+    while(guard++<80){
+      var tk=emit(L,true);
+      if(L.dir<0&&tk.x>W+20*DPR)break;
+      if(L.dir>0&&tk.x+tk.w<-20*DPR)break;
+    }
+  });
+  if(reduced)drawFrame(0);
 }
 function drawFrame(dt){
   ctx.clearRect(0,0,W,H);
@@ -389,58 +452,66 @@ function drawFrame(dt){
   var now=performance.now();
   for(var li=0;li<lanes.length;li++){
     var L=lanes[li],y=H*L.fy;
-    /* pointer parallax: lanes drift a few px toward the cursor */
     var targetShift=0;
-    if(mouse.x>-1e4){targetShift=((mouse.y/H)-L.fy)*14*DPR}
+    if(mouse.x>-1e4){targetShift=((mouse.y/H)-L.fy)*12*DPR}
     L.shift+=(targetShift-L.shift)*.04;
     y+=L.shift;
     /* baseline */
     ctx.globalAlpha=C.base*L.dim;ctx.strokeStyle=C.faint;ctx.lineWidth=DPR;
     ctx.beginPath();ctx.moveTo(0,y+6*DPR);ctx.lineTo(W,y+6*DPR);ctx.stroke();
-    /* slide the context window */
-    var dx=L.speed*DPR*dt;
-    for(var i=0;i<L.tokens.length;i++)L.tokens[i].x-=dx;
-    while(L.tokens.length&&L.tokens[0].x+L.tokens[0].w<-30*DPR)L.tokens.shift();
-    /* autoregressive emission */
+    /* drift */
+    var dx=L.dir*L.speed*DPR*dt;
+    for(var i=0;i<L.tokens.length;i++)L.tokens[i].x+=dx;
+    if(L.dir<0){while(L.tokens.length&&L.tokens[0].x+L.tokens[0].w<-40*DPR)L.tokens.shift()}
+    else{while(L.tokens.length&&L.tokens[0].x>W+40*DPR)L.tokens.shift()}
+    /* emission, throttled; do not queue far offscreen */
     L.cool-=dt;
     if(L.cool<=0){
-      var lastTk=L.tokens[L.tokens.length-1];
-      var nx=Math.max(W+10*DPR,lastTk?lastTk.x+lastTk.w+18*DPR:W+10*DPR);
-      emit(L,nx);
-      L.cool=.55+Math.random()*.75;
+      var lastTk=L.tokens[L.tokens.length-1],room=true;
+      if(lastTk){
+        if(L.dir<0&&lastTk.x>W+340*DPR)room=false;
+        if(L.dir>0&&lastTk.x<-340*DPR)room=false;
+      }
+      if(room)emit(L);
+      L.cool=.5+Math.random()*.7;
     }
-    /* roving query: a visible token re-attends over its context */
-    L.qcool=(L.qcool||0)-dt;
+    /* roving query re-attends inside the viewport */
+    L.qcool-=dt;
     if(L.qcool<=0&&L.tokens.length>4){
       var vis=[];
-      for(var v=1;v<L.tokens.length;v++){
-        if(L.tokens[v].x>60*DPR&&L.tokens[v].x<W-40*DPR)vis.push(v);
+      for(var v=0;v<L.tokens.length;v++){
+        if(L.tokens[v].x>50*DPR&&L.tokens[v].x+L.tokens[v].w<W-50*DPR)vis.push(v);
       }
-      if(vis.length){castArcs(L,vis[Math.floor(Math.random()*vis.length)])}
-      L.qcool=.5+Math.random()*.7;
+      if(vis.length)castArcs(L,vis[Math.floor(Math.random()*vis.length)]);
+      L.qcool=.45+Math.random()*.65;
     }
-    /* attention arcs (above the lane), fading like a shifting context */
-    ctx.lineWidth=1.3*DPR;
+    /* attention arcs: backward above the line, forward below;
+       color, alpha, and thickness all follow the weight */
     for(var a=L.arcs.length-1;a>=0;a--){
       var A=L.arcs[a],age=(now-A.born)/2400;
-      if(age>1||A.b.x+A.b.w<-30*DPR){L.arcs.splice(a,1);continue}
+      if(age>1){L.arcs.splice(a,1);continue}
       var x1=A.a.x+A.a.w/2,x2=A.b.x+A.b.w/2;
-      if(x1>W+60*DPR)continue;
+      if(Math.max(x1,x2)<-40*DPR||Math.min(x1,x2)>W+40*DPR)continue;
       var span=Math.abs(x1-x2);
-      var h=Math.min(H*.11,span*.36)+8*DPR;
-      ctx.globalAlpha=C.arc*L.dim*(.35+.65*A.w)*(1-age);
-      ctx.strokeStyle=C.accent;
-      ctx.beginPath();ctx.moveTo(x1,y-4*DPR);
-      ctx.quadraticCurveTo((x1+x2)/2,y-h,x2,y-4*DPR);
+      var h=Math.min(H*.085,span*.34)+8*DPR;
+      var up=!A.fwd; /* attends behind: arc above; attends ahead: below */
+      ctx.globalAlpha=C.arc*L.dim*(.25+.75*A.w)*(1-age);
+      ctx.strokeStyle=heat(A.w);
+      ctx.lineWidth=(0.8+A.w*1.5)*DPR;
+      ctx.beginPath();
+      ctx.moveTo(x1,y+(up?-4:4)*DPR);
+      ctx.quadraticCurveTo((x1+x2)/2,y+(up?-h:h),x2,y+(up?-4:4)*DPR);
       ctx.stroke();
     }
     /* tokens */
-    ctx.font=(L.size*DPR)+"px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    ctx.font=fontFor(L);
     ctx.textBaseline="alphabetic";
     for(var k=0;k<L.tokens.length;k++){
       var T=L.tokens[k],fresh=(now-T.born)<900;
-      if(T.x>W+60*DPR)continue;
-      var edge=Math.min(1,Math.max(0,(T.x+T.w)/(80*DPR)));           /* fade out left */
+      if(T.x>W+60*DPR||T.x+T.w<-60*DPR)continue;
+      var edgeL=Math.min(1,Math.max(0,(T.x+T.w)/(80*DPR)));
+      var edgeR=Math.min(1,Math.max(0,(W-T.x)/(80*DPR)));
+      var edge=Math.min(edgeL,edgeR);
       ctx.fillStyle=fresh?C.accent:C.ink;
       ctx.globalAlpha=(fresh?C.tokNew:C.tok*.8)*L.dim*edge;
       ctx.fillText(T.g,T.x,y);

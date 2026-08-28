@@ -302,3 +302,10 @@ Replaced the generic flow field with a scene about the work itself:
 - Animation now runs 5 lanes (two dimmed behind the headline) walking one cohesive story in plain words: the life of a learning machine, from data and attention through the agent loop (goal, observe, retrieve, reason, tool call, verify, reflect, memory, reward, gradient) to shipping, drift, and earning trust; ~34 beats, one cycle roughly 30s per lane, staggered offsets. Attention arcs hop between story beats.
 - Tagline: "Building systems that reason, act, and earn trust." with the three key phrases pulsing in accent; display sized clamp(32px,6vw,58px) for a two-line break.
 - The story's closing beats intentionally echo the tagline ("it earns trust slowly, the way good systems do").
+
+## v6.3 Hero: Bidirectional Semantic Attention + Dominant Name (current)
+
+- 7 lanes at random directions and speeds (13-30 px/s), two center lanes dimmed to .35 for headline legibility; lanes prefill the full width in story order on load.
+- Attention model: each query token scores nearby tokens both behind and ahead; same semantic family (12 keyword groups: data, model, vectors, attention, goal/agent, see/predict/act, memory, reasoning, tools, gradients, evaluation, trust) binds strongly (+0.55..0.75), others decay exp(-gap/6). Top 2-4 become arcs.
+- Rendering: backward arcs curve above the baseline, forward arcs below; color maps weight on a heat scale (faint gray-blue -> accent periwinkle -> hot orange #D9480F light / #FFA94D dark); alpha and stroke width also scale with weight.
+- Hero hierarchy: name "Taher Ahmadi" dominant (Space Grotesk 600, clamp 46-92px), mono uppercase meta line, tagline stepped down to clamp 22-38px in ink-2.
