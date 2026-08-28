@@ -77,10 +77,10 @@ a:hover{color:var(--accent);background-size:0% 1px}
 .hero-in::before{
   content:"";position:absolute;inset:-130px -160px;z-index:-1;
   background:color-mix(in srgb,var(--bg) 55%,transparent);
-  -webkit-mask-image:radial-gradient(ellipse 58% 58% at 50% 50%,
-    #000 22%,rgba(0,0,0,.85) 40%,rgba(0,0,0,.5) 58%,rgba(0,0,0,.18) 76%,transparent 92%);
-  mask-image:radial-gradient(ellipse 58% 58% at 50% 50%,
-    #000 22%,rgba(0,0,0,.85) 40%,rgba(0,0,0,.5) 58%,rgba(0,0,0,.18) 76%,transparent 92%);
+  -webkit-mask-image:radial-gradient(ellipse 68% 66% at 50% 50%,
+    #000 26%,rgba(0,0,0,.85) 44%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.18) 78%,transparent 93%);
+  mask-image:radial-gradient(ellipse 68% 66% at 50% 50%,
+    #000 26%,rgba(0,0,0,.85) 44%,rgba(0,0,0,.5) 62%,rgba(0,0,0,.18) 78%,transparent 93%);
 }
 .hero h1{
   font-family:var(--disp);font-size:clamp(46px,8vw,92px);font-weight:600;
@@ -543,7 +543,7 @@ function resize(){
 function cyOf(t){return t.L.y-t.L.size*DPR*.34}
 function fogAt(x,y){
   /* oval matching the hero content: full strength at center, gone at rim */
-  var dx=(x-W*.5)/(W*.34),dy=(y-H*.47)/(H*.36);
+  var dx=(x-W*.5)/(W*.43),dy=(y-H*.47)/(H*.45);
   var d=dx*dx+dy*dy;
   return d>=1?1:.12+.88*d;
 }
