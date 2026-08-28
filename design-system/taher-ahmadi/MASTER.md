@@ -324,3 +324,9 @@ Load lag fixed and steady-state cost cut ~2.5x:
 - Dashed curve strokes replaced by dot-sampled quadratic arcs (7-20 dots each, one fill per arc); dash rasterization was the dominant frame cost.
 - Text blitted from per-lane sprite caches instead of fillText (~280 tokens/frame); caches invalidated on theme change.
 - Redundant full-canvas clearRect removed; canvas DPR capped at 1.5.
+
+## v6.6 Mouse Reactivity (current)
+
+- Cursor as query: the word nearest the pointer becomes the attention query (highlighted in accent), casting boosted arcs (x1.3 weight, +1 arc, 0.3s cadence) to its context.
+- Time dilation: each lane's drift and emission slow up to 88% by vertical proximity to the pointer (smoothly lerped), so the passage becomes readable where the reader looks.
+- Both are pointer-only enhancements; touch and reduced-motion behavior unchanged.

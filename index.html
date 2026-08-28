@@ -318,6 +318,7 @@ label();
 var cv=document.getElementById("field"),ctx=cv.getContext("2d");
 var W,H,DPR,C={},lanes=[],raf=null,last=0;
 var mouse={x:-1e5,y:-1e5};
+var hoverTk=null,hoverCool=0;
 
 var PASSAGE=[
   "it begins with data.","billions of small examples,","each one a lesson.",
@@ -380,7 +381,7 @@ function makeLane(fy,size,dim,phase){
     fy:fy,size:size,dim:dim,
     dir:Math.random()<.5?-1:1,
     speed:13+Math.random()*17,
-    tokens:[],arcs:[],spr:{},cool:phase,qcool:Math.random(),shift:0,pi:0
+    tokens:[],arcs:[],spr:{},cool:phase,qcool:Math.random(),shift:0,pi:0,slow:1
   };
 }
 function fontFor(L){return (L.size*DPR)+"px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"}
@@ -419,10 +420,11 @@ function emit(L,seed){
   if(!seed)castArcs(L,L.tokens.length-1);
   return tk;
 }
-function castArcs(L,qi){
+function castArcs(L,qi,boost){
   /* the query token attends over nearby context, both directions.
      Related words (same semantic family) bind strongly; the rest
-     decays with distance, softmax-style. */
+     decays with distance, softmax-style. A cursor query (boost) casts
+     more, hotter arcs. */
   var q=L.tokens[qi],now=performance.now();
   var cands=[];
   for(var i=Math.max(0,qi-10);i<Math.min(L.tokens.length,qi+11);i++){
@@ -430,11 +432,12 @@ function castArcs(L,qi){
     var gap=Math.abs(qi-i);
     var w=Math.exp(-gap/6)*(.18+.3*Math.random());
     if(q.gid>=0&&L.tokens[i].gid===q.gid)w+=.55+.2*Math.random();
+    if(boost)w=Math.min(1,w*1.3+.12);
     cands.push({i:i,w:Math.min(1,w)});
   }
   cands.sort(function(a,b){return b.w-a.w});
   if(L.arcs.length>34)L.arcs.splice(0,L.arcs.length-34);
-  var want=2+Math.floor(Math.random()*3),picked=0;
+  var want=(boost?3:2)+Math.floor(Math.random()*3),picked=0;
   for(var k=0;k<cands.length&&picked<want;k++){
     if(cands[k].w>.2){
       L.arcs.push({a:q,b:L.tokens[cands[k].i],w:cands[k].w,fwd:cands[k].i>qi,born:now});
@@ -476,6 +479,7 @@ function resize(){
 function drawFrame(dt){
   ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
   var now=performance.now();
+  hoverTk=null; /* reassigned per frame below */
   for(var li=0;li<lanes.length;li++){
     var L=lanes[li],y=H*L.fy;
     var targetShift=0;
@@ -485,13 +489,20 @@ function drawFrame(dt){
     /* baseline */
     ctx.globalAlpha=C.base*L.dim;ctx.strokeStyle=C.faint;ctx.lineWidth=DPR;
     ctx.beginPath();ctx.moveTo(0,y+6*DPR);ctx.lineTo(W,y+6*DPR);ctx.stroke();
+    /* time dilation: the stream slows where the reader looks */
+    var slowTarget=1;
+    if(mouse.x>-1e4){
+      var prox=1-Math.min(1,Math.abs(y-mouse.y)/(H*.13));
+      slowTarget=1-.88*Math.max(0,prox);
+    }
+    L.slow+=(slowTarget-L.slow)*.08;
     /* drift */
-    var dx=L.dir*L.speed*DPR*dt;
+    var dx=L.dir*L.speed*DPR*dt*L.slow;
     for(var i=0;i<L.tokens.length;i++)L.tokens[i].x+=dx;
     if(L.dir<0){while(L.tokens.length&&L.tokens[0].x+L.tokens[0].w<-40*DPR)L.tokens.shift()}
     else{while(L.tokens.length&&L.tokens[0].x>W+40*DPR)L.tokens.shift()}
     /* emission, throttled; do not queue far offscreen */
-    L.cool-=dt;
+    L.cool-=dt*L.slow;
     if(L.cool<=0){
       var lastTk=L.tokens[L.tokens.length-1],room=true;
       if(lastTk){
@@ -500,6 +511,19 @@ function drawFrame(dt){
       }
       if(room)emit(L);
       L.cool=.5+Math.random()*.7;
+    }
+    /* cursor as query: the word under the pointer attends */
+    if(mouse.x>-1e4&&Math.abs(y-mouse.y)<H*.09){
+      var best=-1,bd=140*DPR;
+      for(var b=0;b<L.tokens.length;b++){
+        var T2=L.tokens[b],d2=Math.abs(T2.x+T2.w/2-mouse.x);
+        if(d2<bd&&T2.x>-20*DPR&&T2.x<W+20*DPR){bd=d2;best=b}
+      }
+      if(best>=0){
+        hoverTk=L.tokens[best];
+        hoverCool-=dt;
+        if(hoverCool<=0){castArcs(L,best,true);hoverCool=.3}
+      }
     }
     /* roving query re-attends inside the viewport */
     L.qcool-=dt;
@@ -541,13 +565,13 @@ function drawFrame(dt){
     }
     /* tokens (blitted from sprite cache) */
     for(var k=0;k<L.tokens.length;k++){
-      var T=L.tokens[k],fresh=(now-T.born)<900;
+      var T=L.tokens[k],fresh=(now-T.born)<900,hot=(T===hoverTk);
       if(T.x>W+60*DPR||T.x+T.w<-60*DPR)continue;
       var edgeL=Math.min(1,Math.max(0,(T.x+T.w)/(80*DPR)));
       var edgeR=Math.min(1,Math.max(0,(W-T.x)/(80*DPR)));
       var edge=Math.min(edgeL,edgeR);
-      var sp=spriteFor(L,T.g,fresh);
-      ctx.globalAlpha=(fresh?C.tokNew:C.tok*.8)*L.dim*edge;
+      var sp=spriteFor(L,T.g,fresh||hot);
+      ctx.globalAlpha=((fresh||hot)?C.tokNew:C.tok*.8)*(hot?1:L.dim)*edge;
       ctx.drawImage(sp,T.x-sp._pad,y-sp._dy);
     }
   }
