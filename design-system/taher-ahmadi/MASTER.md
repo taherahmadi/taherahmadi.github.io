@@ -258,3 +258,13 @@ Applied `craft` (12 rules), `cognitive-load-conversion`, and `dieter-rams-princi
 - Spacing normalized to the 4px scale; tabular-nums on stat and date figures
 - Elevation language is borders only (portrait shadow removed); designed :active states
 - Motion tightened to 400-550ms ease-out entrances; no gradients (dot texture only), no glow, no transition:all
+
+## v4 Direction Change: Editorial Monograph
+
+The IDE-dark direction was replaced at the owner's request for a structurally different design (the previous three iterations shared one skeleton). Current system:
+
+- **Layout:** sticky sidebar index (numbered sections, scroll-spy) + single flowing content column; ruled sections instead of card grids
+- **Typography:** Fraunces (display serif, optical sizing) + Inter (text); system mono for metadata labels only
+- **Palette:** warm paper light default `#F6F4EE` / ink `#211D16` / oxblood accent `#8A3324`; warm dark mode `#191510` / terracotta accent `#D98E6B`
+- **Component language:** reference-list publications ([1][2][3], venue in italics, featured entry tinted with left rule), figure plates with Fig. numbers for projects, definition-list skills, ledger-style awards
+- **Craft rules carried over:** no gradients, no glow, named transitions at 150-350ms ease-out, 4px spacing rhythm, tabular-nums, designed hover/focus/active states, reduced-motion support, no em dashes
