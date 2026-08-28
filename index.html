@@ -309,7 +309,7 @@ function readColors(){
   C.accent=cs.getPropertyValue("--accent").trim();
   C.accent2=cs.getPropertyValue("--accent-2").trim();
   var dark=root.hasAttribute("data-theme");
-  C.a1=dark?.32:.14;C.a2=dark?.48:.26;C.fade=dark?.055:.075;
+  C.a1=dark?.32:.30;C.a2=dark?.48:.42;C.fade=dark?.055:.045;
 }
 function resize(){
   DPR=Math.min(devicePixelRatio||1,2);
@@ -382,14 +382,28 @@ if(!reduced){
   },{threshold:.02}).observe(cv.parentNode);
 }
 
+function repaint(){
+  readColors();
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
+  if(reduced)prerender();
+}
 btn.addEventListener("click",function(){
   var dark=root.hasAttribute("data-theme");
   if(dark){root.removeAttribute("data-theme")}else{root.setAttribute("data-theme","dark")}
   try{localStorage.setItem("ta-theme",dark?"light":"dark")}catch(e){}
-  label();readColors();
-  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
-  if(reduced)prerender();
+  label();
 });
+/* single source of truth: recolor on any theme attribute change */
+new MutationObserver(function(){label();repaint()})
+  .observe(root,{attributes:true,attributeFilter:["data-theme"]});
+/* follow OS preference live when the visitor has not chosen */
+if(window.matchMedia){
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(e){
+    var stored=null;try{stored=localStorage.getItem("ta-theme")}catch(err){}
+    if(stored)return;
+    if(e.matches){root.setAttribute("data-theme","dark")}else{root.removeAttribute("data-theme")}
+  });
+}
 
 /* ---------- reveals ---------- */
 var io=new IntersectionObserver(function(es){
