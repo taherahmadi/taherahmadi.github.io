@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Taher Ahmadi</title>
+<meta name="author" content="Taher Ahmadi">
+<meta name="description" content="Open-source research and engineering projects by Taher Ahmadi: computer vision, robotics, and applied machine learning.">
+<link rel="canonical" href="https://taherahmadi.github.io/projects.html">
+<link rel="icon" href="./images/favicon.ico">
+<meta property="og:site_name" content="Taher Ahmadi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects | Taher Ahmadi">
+<meta property="og:description" content="Open-source work spanning computer vision, robotics, and applied machine learning.">
+<meta property="og:url" content="https://taherahmadi.github.io/projects.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Taher Ahmadi, projects page. Shares the v5 minimal language. */
+:root{
+  --bg:#FCFCFA; --ink:#1C1C1A; --ink-2:#4C4C48; --faint:#8A8A84;
+  --rule:#E4E4DE; --link:#1C1C1A;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+html[data-theme="dark"]{
+  --bg:#151514; --ink:#E9E9E4; --ink-2:#B4B4AC; --faint:#7E7E76;
+  --rule:#2C2C29; --link:#E9E9E4;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:88px 24px 72px}
+::selection{background:var(--ink);color:var(--bg)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+a{color:var(--link);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px;transition:text-decoration-color 150ms ease}
+a:hover{text-decoration-color:var(--ink)}
+b{font-weight:600}
+img{max-width:100%;display:block}
+h1{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.4}
+.sub{color:var(--faint);margin:2px 0 0;font-size:14.5px}
+.back{font-size:14px}
+p.intro{margin:40px 0 0;color:var(--ink-2);max-width:62ch}
+.proj{display:grid;grid-template-columns:200px minmax(0,1fr);gap:26px;padding:28px 0;border-top:1px solid var(--rule);margin-top:0}
+.proj:first-of-type{border-top:none}
+.list{margin-top:56px}
+.proj a.shot{display:block;text-decoration:none}
+.proj img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1px solid var(--rule)}
+.proj h2{font-size:15.5px;font-weight:600;margin:0 0 4px;line-height:1.5}
+.proj h2 a{text-decoration:none}
+.proj h2 a:hover{text-decoration:underline;text-decoration-color:var(--ink)}
+.proj p{margin:0 0 6px;color:var(--ink-2);font-size:14px;line-height:1.7}
+.proj .m{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+.proj .m a{color:var(--faint)}
+.proj .m a:hover{color:var(--ink)}
+@media(max-width:600px){.proj{grid-template-columns:1fr;gap:12px}}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--rule)}
+.fine{font-family:var(--mono);font-size:11.5px;color:var(--faint);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
+#themeBtn{background:none;border:none;padding:0;font-family:var(--mono);font-size:11.5px;color:var(--faint);cursor:pointer;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px;transition:color 150ms ease}
+#themeBtn:hover{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Projects</h1>
+  <p class="sub"><a class="back" href="./">Taher Ahmadi</a> · open-source research and engineering work</p>
+  <p class="intro">
+    A selection spanning computer vision, robotics, and applied machine learning, from my
+    <a href="https://github.com/taherahmadi" target="_blank" rel="noopener">GitHub</a>.
+  </p>
+</header>
+
+<div class="list">
+
+<article class="proj">
+  <a class="shot" href="https://arxiv.org/abs/2209.07600" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/papers/stpotr.jpg" alt="Robot follow-ahead experiment with predicted future skeletons overlaid on the scene">
+  </a>
+  <div>
+    <h2><a href="https://ieeexplore.ieee.org/document/10160538" target="_blank" rel="noopener">STPOTR: Simultaneous Human Trajectory &amp; Pose Prediction</a></h2>
+    <p>Non-autoregressive transformer that decodes future 3D pose and global trajectory in parallel for robot follow-ahead, published at ICRA 2023. Cited by 51.</p>
+    <div class="m">2023 · ICRA · <a href="https://arxiv.org/abs/2209.07600" target="_blank" rel="noopener">arXiv</a> · <a href="https://ieeexplore.ieee.org/document/10160538" target="_blank" rel="noopener">IEEE</a></div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://ieeexplore.ieee.org/document/9811883" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/papers/intent.jpg" alt="Predicted probability distribution over future human positions with candidate goals">
+  </a>
+  <div>
+    <h2><a href="https://ieeexplore.ieee.org/document/9811883" target="_blank" rel="noopener">Human Navigational Intent Inference</a></h2>
+    <p>Models pedestrians as noisily rational planners, combining probabilistic inference with optimal control to predict where a person is heading in real time, published at ICRA 2022. Cited by 23.</p>
+    <div class="m">2022 · ICRA · <a href="https://ieeexplore.ieee.org/document/9811883" target="_blank" rel="noopener">IEEE</a></div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://doi.org/10.1016/j.dib.2020.106539" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/papers/storenav.jpg" alt="Instrumented retail environment used to record the SFU-Store-Nav dataset">
+  </a>
+  <div>
+    <h2><a href="https://doi.org/10.1016/j.dib.2020.106539" target="_blank" rel="noopener">SFU-Store-Nav: Indoor Human Navigation Dataset</a></h2>
+    <p>Multimodal dataset of human trajectories, poses, and gaze recorded in an instrumented retail environment, supporting research on socially aware robot navigation. Data in Brief, 2020. Cited by 10.</p>
+    <div class="m">2020 · Dataset · <a href="https://doi.org/10.1016/j.dib.2020.106539" target="_blank" rel="noopener">DOI</a></div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/15/2.png" alt="Qualitative comparison of estimated depth maps against ground truth and baseline">
+  </a>
+  <div>
+    <h2><a href="https://github.com/taherahmadi/Leveraging-Adversarial-training-for-Monocular-Depth-Estimation" target="_blank" rel="noopener">Adversarial Training for Monocular Depth Estimation</a></h2>
+    <p>Added a discriminator and structural-similarity loss on top of a state-of-the-art depth estimator; improved performance on NYU-v2 when adversarial training is used.</p>
+    <div class="m">2019 · GANs · Depth · 2&#9733;</div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://github.com/taherahmadi/BSc" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/14/02.jpg" alt="ADAS warning overlay showing distance to a detected car">
+  </a>
+  <div>
+    <h2><a href="https://github.com/taherahmadi/BSc" target="_blank" rel="noopener">Embedded Deep-Learning ADAS</a></h2>
+    <p>B.Sc. thesis: a monocular vision driver-assistance system that detects cars and pedestrians, estimates depth, and warns of probable collisions in real time.</p>
+    <div class="m">2018 · Embedded · Detection · Depth</div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://github.com/taherahmadi/WCS" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/12/wcs.png" alt="Wireless communication simulator showing robot connectivity">
+  </a>
+  <div>
+    <h2><a href="https://github.com/taherahmadi/WCS" target="_blank" rel="noopener">Wireless Communication Sim for Multi-Robot Teams</a></h2>
+    <p>ROS and Gazebo simulator of realistic signal propagation between robots, built at AIRLab (Politecnico di Milano) to study how communication models change exploration algorithms.</p>
+    <div class="m">2017 · ROS · Multi-robot · 6&#9733;</div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://github.com/taherahmadi/SOS-VR-Victim-Detection-and-Pose-Estimation" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/05/00.png" alt="Rescue robot and victim model in a simulation environment">
+  </a>
+  <div>
+    <h2><a href="https://github.com/taherahmadi/SOS-VR-Victim-Detection-and-Pose-Estimation" target="_blank" rel="noopener">Victim Detection &amp; 3D Pose for Rescue Robots</a></h2>
+    <p>Two-stage pipeline: detect lying-down bodies, then reconstruct 3D pose and camera via CNN joints and matching-pursuit sparse representation, all from a single 2D image.</p>
+    <div class="m">2016 · 3D Pose · Search &amp; Rescue · 4&#9733;</div>
+  </div>
+</article>
+
+<article class="proj">
+  <a class="shot" href="https://github.com/SOSVR/base_code-v2" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+    <img loading="lazy" src="images/02/RoboCupRescue.png" alt="RoboCup Rescue Simulation league emblem">
+  </a>
+  <div>
+    <h2><a href="https://github.com/SOSVR/base_code-v2" target="_blank" rel="noopener">RoboCup Rescue: Team SOS VR Base Code</a></h2>
+    <p>Open-source ROS/Gazebo framework for the Rescue Virtual Robot league: SLAM, navigation, human recognition, multi-agent cooperation. Led the team to 2nd at RoboCup 2017.</p>
+    <div class="m">2016&ndash;18 · ROS · SLAM · 3&#9733;</div>
+  </div>
+</article>
+
+
+
+
+
+
+</div>
+
+<footer>
+  <div class="fine">
+    <span><a href="./">Home</a></span>
+    <span>© 2026 Taher Ahmadi</span>
+    <button id="themeBtn" type="button" aria-label="Toggle color theme">dark mode</button>
+  </div>
+</footer>
+
+</main>
+<script>
+(function(){
+"use strict";
+var root=document.documentElement,btn=document.getElementById("themeBtn"),saved=null;
+try{saved=localStorage.getItem("ta-theme")}catch(e){}
+if(saved==="dark"){root.setAttribute("data-theme","dark")}
+else if(!saved&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){root.setAttribute("data-theme","dark")}
+function label(){btn.textContent=root.hasAttribute("data-theme")?"light mode":"dark mode"}
+label();
+btn.addEventListener("click",function(){
+  var dark=root.hasAttribute("data-theme");
+  if(dark){root.removeAttribute("data-theme")}else{root.setAttribute("data-theme","dark")}
+  try{localStorage.setItem("ta-theme",dark?"light":"dark")}catch(e){}
+  label();
+});
+})();
+</script>
+</body>
+</html>
