@@ -315,8 +315,8 @@ label();
    passage is partitioned across 7 lanes; attention leaps across lanes to
    every piece in the same semantic family. Cursor = query, lanes dilate
    time near the pointer. -------------------------------------------------- */
-var cv=document.getElementById("field"),ctx=cv.getContext("2d");
-var W,H,DPR,C={},lanes=[],ARCS=[],raf=null,last=0;
+var cv=document.getElementById("field"),ctx=cv.getContext("2d",{alpha:false});
+var W,H,DPR,C={},lanes=[],ARCS=[],raf=null,last=0,qLevel=0;
 var mouse={x:-1e5,y:-1e5};
 var hover=null,hoverCool=0; /* {bt,pi} */
 
@@ -384,7 +384,8 @@ function buildBeats(){
   });
 }
 
-function heat(w){var hue=120*(1-w);return "hsl("+hue.toFixed(0)+",78%,"+(C.dark?58:42)+"%)"}
+var HEAT=[];
+function heat(w){return HEAT[Math.round(w*12)]||HEAT[12]}
 function readColors(){
   var cs=getComputedStyle(root);
   C.bg=cs.getPropertyValue("--bg").trim();
@@ -393,6 +394,10 @@ function readColors(){
   C.accent=cs.getPropertyValue("--accent").trim();
   var dark=root.hasAttribute("data-theme");
   C.dark=dark;
+  HEAT=[];
+  for(var hq=0;hq<=12;hq++){
+    HEAT.push("hsl("+(120*(1-hq/12)).toFixed(0)+",78%,"+(dark?58:42)+"%)");
+  }
   C.tok=dark?.72:.68;
   C.arc=dark?.72:.62;
   C.base=dark?.12:.1;
@@ -493,7 +498,8 @@ function castArcs(bt,pi,boost){
       }
     }
   }
-  if(ARCS.length>80)ARCS.splice(0,ARCS.length-80);
+  var cap=qLevel>0?45:80;
+  if(ARCS.length>cap)ARCS.splice(0,ARCS.length-cap);
 }
 function resize(){
   DPR=Math.min(devicePixelRatio||1,1.5);
@@ -553,6 +559,7 @@ function drawDotted(x1,y1,x2,y2,mx,my,w,alpha){
   ctx.fill();
 }
 function drawFrame(dt){
+  if(mouse.on){mouse.x=(mouse.cx-heroRect.left)*DPR;mouse.y=(mouse.cy-heroRect.top)*DPR}
   ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);
   var now=performance.now();
   hover=null;
@@ -663,18 +670,31 @@ function drawFrame(dt){
   }
   ctx.globalAlpha=1;
 }
+var qEma=16,qCheck=0,skip=false;
 function step(ts){
-  var dt=Math.min(.05,(ts-last)/1000||.016);last=ts;
+  var dtMs=(ts-last)||16;last=ts;
+  var dt=Math.min(.05,dtMs/1000);
+  qEma=qEma*.9+Math.min(dtMs,100)*.1;
+  qCheck-=dt;
+  if(qCheck<=0){
+    qCheck=2;
+    if(qEma>30&&qLevel<2)qLevel++;
+    else if(qEma<18&&qLevel>0)qLevel--;
+  }
+  if(qLevel>=2){skip=!skip;if(skip){raf=requestAnimationFrame(step);return}}
   drawFrame(dt);
   raf=requestAnimationFrame(step);
 }
 resize();
-addEventListener("resize",resize);
+addEventListener("resize",function(){resize();cacheRect()});
+var heroRect={left:0,top:0};
+function cacheRect(){var r=cv.getBoundingClientRect();heroRect.left=r.left;heroRect.top=r.top}
+cacheRect();
+addEventListener("scroll",cacheRect,{passive:true});
 cv.parentNode.addEventListener("pointermove",function(e){
-  var r=cv.getBoundingClientRect();
-  mouse.x=(e.clientX-r.left)*DPR;mouse.y=(e.clientY-r.top)*DPR;
+  mouse.cx=e.clientX;mouse.cy=e.clientY;mouse.on=true;
 });
-cv.parentNode.addEventListener("pointerleave",function(){mouse.x=-1e5;mouse.y=-1e5});
+cv.parentNode.addEventListener("pointerleave",function(){mouse.on=false;mouse.x=-1e5;mouse.y=-1e5});
 if(!reduced){
   new IntersectionObserver(function(es){
     es.forEach(function(e){
