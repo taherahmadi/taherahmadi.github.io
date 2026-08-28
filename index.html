@@ -178,7 +178,7 @@ footer{margin-top:96px;padding-top:28px;border-top:1px solid var(--rule)}
       <span class="verb">reason</span>, <span class="verb">act</span>, and <span class="verb">earn&nbsp;trust</span>.
     </p>
     <p class="sub">
-      Seven years across robotics, computer vision, and generative AI,
+      7+ years across robotics, computer vision, and generative AI,
       from ICRA papers on human motion prediction to agentic LLM systems
       running in production.
     </p>
@@ -349,16 +349,9 @@ function gidOf(g){
       if(lg.indexOf(GROUPS[i][j])>=0)return i;
   return -1;
 }
-function hexRGB(h){
-  h=h.replace("#","");
-  if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
-  return [parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];
-}
-function mixc(a,b,t){
-  return "rgb("+Math.round(a[0]+(b[0]-a[0])*t)+","+Math.round(a[1]+(b[1]-a[1])*t)+","+Math.round(a[2]+(b[2]-a[2])*t)+")";
-}
-function heat(w){ /* attention weight -> color: faint -> accent -> hot */
-  return w<.5?mixc(C.rgbFaint,C.rgbAccent,w*2):mixc(C.rgbAccent,C.rgbHot,(w-.5)*2);
+function heat(w){ /* attention weight -> full spectrum: green through yellow to red */
+  var hue=120*(1-w); /* 120 = green, 0 = red */
+  return "hsl("+hue.toFixed(0)+",78%,"+(C.dark?58:42)+"%)";
 }
 function readColors(){
   var cs=getComputedStyle(root);
@@ -367,8 +360,7 @@ function readColors(){
   C.faint=cs.getPropertyValue("--faint").trim();
   C.accent=cs.getPropertyValue("--accent").trim();
   var dark=root.hasAttribute("data-theme");
-  C.hot=dark?"#FFA94D":"#D9480F";
-  C.rgbFaint=hexRGB(C.faint);C.rgbAccent=hexRGB(C.accent);C.rgbHot=hexRGB(C.hot);
+  C.dark=dark;
   C.tok=dark?.6:.55;
   C.tokNew=dark?.95:.9;
   C.arc=dark?.7:.6;
@@ -394,7 +386,7 @@ function emit(L,seed){
   }
   else if(L.dir<0){x=lastTk?Math.max(W+10*DPR,lastTk.x+lastTk.w+gap):W*.02}
   else{x=lastTk?Math.min(-10*DPR-w,lastTk.x-gap-w):W*.98-w}
-  var tk={g:g,x:x,w:w,gid:gidOf(g),born:performance.now()};
+  var tk={g:g,x:x,w:w,gid:gidOf(g),born:performance.now()-(seed?5000:0)};
   L.tokens.push(tk);
   castArcs(L,L.tokens.length-1);
   return tk;
@@ -485,24 +477,29 @@ function drawFrame(dt){
       if(vis.length)castArcs(L,vis[Math.floor(Math.random()*vis.length)]);
       L.qcool=.45+Math.random()*.65;
     }
-    /* attention arcs: backward above the line, forward below;
-       color, alpha, and thickness all follow the weight */
+    /* attention arcs: dotted, word-center to word-center; backward
+       above the line, forward below; color runs the green-to-red
+       spectrum with weight, alpha and thickness follow it too */
+    var cy=y-L.size*DPR*.34; /* vertical center of the words */
+    ctx.lineCap="round";
+    ctx.setLineDash([Math.max(1,DPR),4.2*DPR]);
     for(var a=L.arcs.length-1;a>=0;a--){
       var A=L.arcs[a],age=(now-A.born)/2400;
       if(age>1){L.arcs.splice(a,1);continue}
       var x1=A.a.x+A.a.w/2,x2=A.b.x+A.b.w/2;
       if(Math.max(x1,x2)<-40*DPR||Math.min(x1,x2)>W+40*DPR)continue;
       var span=Math.abs(x1-x2);
-      var h=Math.min(H*.085,span*.34)+8*DPR;
+      var h=Math.min(H*.085,span*.34)+10*DPR;
       var up=!A.fwd; /* attends behind: arc above; attends ahead: below */
       ctx.globalAlpha=C.arc*L.dim*(.25+.75*A.w)*(1-age);
       ctx.strokeStyle=heat(A.w);
-      ctx.lineWidth=(0.8+A.w*1.5)*DPR;
+      ctx.lineWidth=(0.9+A.w*1.6)*DPR;
       ctx.beginPath();
-      ctx.moveTo(x1,y+(up?-4:4)*DPR);
-      ctx.quadraticCurveTo((x1+x2)/2,y+(up?-h:h),x2,y+(up?-4:4)*DPR);
+      ctx.moveTo(x1,cy);
+      ctx.quadraticCurveTo((x1+x2)/2,cy+(up?-h:h),x2,cy);
       ctx.stroke();
     }
+    ctx.setLineDash([]);
     /* tokens */
     ctx.font=fontFor(L);
     ctx.textBaseline="alphabetic";

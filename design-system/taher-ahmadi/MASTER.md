@@ -309,3 +309,10 @@ Replaced the generic flow field with a scene about the work itself:
 - Attention model: each query token scores nearby tokens both behind and ahead; same semantic family (12 keyword groups: data, model, vectors, attention, goal/agent, see/predict/act, memory, reasoning, tools, gradients, evaluation, trust) binds strongly (+0.55..0.75), others decay exp(-gap/6). Top 2-4 become arcs.
 - Rendering: backward arcs curve above the baseline, forward arcs below; color maps weight on a heat scale (faint gray-blue -> accent periwinkle -> hot orange #D9480F light / #FFA94D dark); alpha and stroke width also scale with weight.
 - Hero hierarchy: name "Taher Ahmadi" dominant (Space Grotesk 600, clamp 46-92px), mono uppercase meta line, tagline stepped down to clamp 22-38px in ink-2.
+
+## v6.4 Arc Styling (current)
+
+- Attention arcs are dotted (round caps, dash [1, 4.2] scaled by DPR), drawn from the vertical center of one word to the center of the other.
+- Weight-to-color is the full spectrum hsl(120 -> 0): green (weak) through yellow and orange to red (strong); lightness 58% dark / 42% light. Alpha and stroke width still scale with weight.
+- Seeded (prefill) tokens carry a backdated timestamp so the ribbon loads as settled gray context; only genuinely new tokens flash accent (fixes the blue-then-gray refresh artifact).
+- Hero sub-line reads "7+ years" instead of "Seven years".
